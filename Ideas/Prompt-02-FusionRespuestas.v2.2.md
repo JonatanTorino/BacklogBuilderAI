@@ -1,0 +1,1 @@
+Fusiona ambos archivos en uno solo, eliminando lo redundante pero ante las diferencias en el control de cantidad de licencias, que prevalezca lo que viene de la versión nueva

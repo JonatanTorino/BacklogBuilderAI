@@ -1,0 +1,24 @@
+{
+  "parentWorkItemId": 12345,
+  "userStories": [
+    {
+      "title": "",
+      "description": "",
+      "acceptanceCriteria": [],
+      "tasks": [
+        {
+          "title": "",
+          "definitionOfDone": "",
+          "ADO_ID": null
+        }
+      ],
+      "ADO_ID": null
+    }
+  ],
+  "outOfScope": [
+    {
+      "topic": "",
+      "reason": ""
+    }
+  ]
+}

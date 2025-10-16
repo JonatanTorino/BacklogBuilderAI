@@ -1,0 +1,6 @@
+{
+  "organizationUrl": "https://dev.azure.com/miOrg",
+  "projectName": "MiProyecto",
+  "personalAccessToken": "<token-secreto> PAT plano, o como variable de entorno <env:NombrePAT> ",
+  "areaPath": "MiProyecto\\area"
+}
