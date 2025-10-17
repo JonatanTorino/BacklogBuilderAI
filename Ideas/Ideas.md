@@ -9,16 +9,35 @@ Crear versiones de prompts para generar deltas/incrementales
 - Generar backlog DeltaIn y DeltaOut
 - A la última versión del backlog (vigente) insertar el DeltaIn y opcional eliminar el DeltaOut o mover a un nodo movedToOutOfScope con su razón
 
+## Joinear Síntesis
+
+A veces puedo hacer varios intentos de generar síntesis
+
+- usando multiples archivos con multiples tópicos y extrayendo un tópico solo
+- usando un solo archivo con un solo tópico
+- En ambos casos suelen tener gaps entre estas síntesis que sirven para complementarse generando una síntesis más rica
+
+Crear un prompt que permita unificar estás versiones de síntesis en una más completa.
+
 ## Prompt-03
 
-En las Acceptance Criteria
+1. Para las Historias de usuario (funcionales)
+   - Analizar si por el tamaño de tareas técnicas accionables es necesario separar en capas (Datos, Clases, Interfaz grafica)
+   - Si no se justifica el nivel de separación, agrupar en tareas que delimiten un progreso por las acciones que estén altamente relacionadas por depenencias en común
+2. En las Acceptance Criteria de las Historias de usuario (funcionales)
+   - Agregar un AC## por cada criterio de aceptación
+   - Mejorar las alternativas de Formato Gherkin (Dado/Cuando/Entonces)
+3. En las Task
+   - Vincular el Defintion Of Done con el AC## que corresponda, pudiendo haber más de una Task para una misma AC##
 
-- Mejorar las alternativas de Formato Gherkin (Dado/Cuando/Entonces)
-- Agregar un AC##
+## Actualización de ADO
 
-En las US, dentro de la descripción, agregar DoD
+Posibilidad de actualizar ADO con json de backlog
 
-En las Task vincular el DoD con la AC## que corresponda, pudiendo haber más de una Task para una misma AC
+- Al WI agregar una propiedad
+- Propiedad `"action: "Update"` actualiza todos los campos del WIT
+- Propiedad `"action: "Remove"` remueve el WIT del backlog
+- Remover la propiedad del json luego de procesar el WI
 
 ## Convención de nombres de archivos para todo el flujo
 
@@ -32,15 +51,6 @@ En las Task vincular el DoD con la AC## que corresponda, pudiendo haber más de 
 
 Esto da trazabilidad clara:
 **raw → clarifications → resolved → draft → final → ADO**.
-
-## Actualización de ADO
-
-Posibilidad de actualizar ADO con json de backlog
-
-- Al WI agregar una propiedad
-- Propiedad `"action: "Update"` actualiza todos los campos del WIT
-- Propiedad `"action: "Remove"` remueve el WIT del backlog
-- Remover la propiedad del json luego de procesar el WI
 
 ## Versiones de prompts para backlogs tipo
 

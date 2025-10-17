@@ -8,19 +8,23 @@ TAREA:
    - Título: Verbo + Objeto + Contexto (sin "Como [rol] quiero...")
    - Acceptance Criteria: Formato Gherkin (Dado/Cuando/Entonces)
    - Definition of Done: Lista verificable
-3. **Generación de Historias de Refinamiento (No Funcionales)**: Analiza las secciones `clarificationPoints` (con respuesta `null`) y `refinementMeetings`. Crea **una o más Historias de Usuario** dedicadas al **Refinamiento (Refinement)** para resolver estos Gaps.
+2. **Generación de Historias de Refinamiento (No Funcionales)**: Analiza las secciones `clarificationPoints` (con respuesta `null`) y `refinementMeetings`. Crea **una o más Historias de Usuario** dedicadas al **Refinamiento (Refinement)** para resolver estos Gaps.
    - **Título de Refinamiento**: Debe indicar claramente que es una actividad de Refinamiento (ej: "Refinamiento: Definir flujo de autenticación").
-   **Descripción**: Debe listar los `clarificationPoints` o `refinementMeetings` que busca resolver, transfiriendo su contenido.
+   - **Descripción**: Debe listar los `clarificationPoints` o `refinementMeetings` que busca resolver, transfiriendo su contenido.
    - **Tareas**: Desglosa estas historias de refinamiento en `tasks` (ej: "Contactar a Stakeholder X", "Revisar documentación de API").
-4. **Desglose de Tareas**: Desglosa cada Historia Funcional en `tasks` técnicas accionables. **Estas tareas deben incluir obligatoriamente**:
+3. **Desglose de Tareas**: Desglosa cada Historia Funcional en `tasks` técnicas accionables:
    - La tarea principal de desarrollo/implementación.
-   - Una tarea para **"Realizar la documentación técnica"**.
-   - Una tarea para **"Revisión de código"** (Code Review).
-5. **Desglose de Tareas para Historias de Refinamiento**: Desglosa cada Historia de Refinamiento en `tasks` de *discovery* y planificación. **Estas tareas deben incluir obligatoriamente**:
-   - La tarea principal de reunión/investigación.
-   - Una tarea para **"Realizar la documentación de diseño"**.
+   - Incluir las siguientes tareas de soporte **obligatoriamente**
+     - **"Ejecutar reglas de comprobación de código"**.
+     - **"Realizar la documentación técnica"**.
+     - **"Revisión de código"** (Code Review).
+4. **Desglose de Tareas para Historias de Refinamiento**: Desglosa cada Historia de Refinamiento en `tasks` de *discovery* y planificación. **Estas tareas deben incluir obligatoriamente**:
+   - La tarea inicial
+     - Cuando es una reunión debe generar como resultado un registro documentado de la reunión.
+     - Cuando es investigación debe generar como resultado un resumen de lo investigado con la colección de las fuentes utilizadas.
+   - Una tarea para **"Realizar la documentación de diseño"** con el resultado de la tarea inicial.
    - Una tarea para **"Creación del backlog con las actividades resultantes del refinamiento"** (Meta-tarea).
-6. Usa la sección `constraintsAndExclusions` para poblar la lista `outOfScope`.
+5. Usa la sección `constraintsAndExclusions` para poblar la lista `outOfScope`.
 
 REGLAS:
 
