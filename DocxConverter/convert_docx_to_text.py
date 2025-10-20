@@ -16,6 +16,8 @@ def convert_docx_to_text(docx_path):
 
     try:
         doc = docx.Document(docx_path)
+        if doc.tables:
+            raise ValueError("El script no soporta archivos con tablas.")
         text = '\n'.join([para.text for para in doc.paragraphs])
 
         base_name = os.path.splitext(docx_path)[0]
@@ -26,8 +28,14 @@ def convert_docx_to_text(docx_path):
 
         print(f"Successfully converted '{docx_path}' to '{txt_path}'")
 
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+    except PermissionError as e:
+        print(f"Permission error: {e}")
+    except docx.opc.exceptions.PackageNotFoundError as e:
+        print(f"Invalid docx file: {e}")
     except Exception as e:
-        print(f"An error occurred while processing {docx_path}: {e}")
+        print(f"An unexpected error occurred while processing {docx_path}: {e}")
 
 def process_directory(directory_path):
     """
