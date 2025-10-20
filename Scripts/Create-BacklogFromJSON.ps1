@@ -138,7 +138,7 @@ $skippedCount = 0
 $errorCount = 0
 
 # Collect IDs of created User Stories so we can list them in the summary
-$createdStoryIds = [System.Collections.Generic.List[int]]::new()
+$createdStoryIds = @()
 
 try {
     Write-Information "STAGE: Processing User Stories..."
@@ -175,7 +175,7 @@ try {
                 $story = $backlog.userStories[$i]
                 
                 # Record created Story ID for summary list
-                $createdStoryIds.Add([int]$storyId) | Out-Null
+                $createdStoryIds.Add($storyId) | Out-Null
 
                 $createdCount++
                 Write-Information "  [SUCCESS] User Story created with ID: $storyId."
@@ -203,7 +203,7 @@ try {
                         # Construir la Descripción de la Task en Markdown
                         $taskDescriptionParts = [System.Collections.Generic.List[string]]@()
                         if ($task.PSObject.Properties['description']) { $taskDescriptionParts.Add($task.description) } # Si la task tuviera descripción
-                        if ($task.PSObject.Properties['definitionOfDone']) { $taskDescriptionParts.Add("**Definition of Done:**`n$($task.definitionOfDone)") }
+                        if ($task.PSObject.Properties['definitionOfDone']) { $taskDescriptionParts.Add("`n`n**Definition of Done:**`n$($task.definitionOfDone)") }
                         $fullTaskDescription = $taskDescriptionParts -join ''
 
                         $taskId = New-WorkItem -Type 'Task' -Title $task.title `
