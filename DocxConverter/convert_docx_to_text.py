@@ -16,7 +16,7 @@ def convert_docx_to_text(docx_path):
 
     try:
         doc = docx.Document(docx_path)
-        if len(doc.tables) > 0:
+        if doc.tables:
             raise ValueError("El script no soporta archivos con tablas.")
         text = '\n'.join([para.text for para in doc.paragraphs])
 
