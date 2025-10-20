@@ -1,6 +1,0 @@
-﻿{
-    "personalAccessToken":  "${env:PAT_AxxonFactory}",
-    "organizationUrl":  "https://dev.azure.com/AXXONGROUP",
-    "projectName":  "Axxon Factory",
-    "areaPath":  "Axxon Factory\\AF_FinanceAndOps"
-}
