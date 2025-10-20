@@ -137,6 +137,9 @@ $createdCount = 0
 $skippedCount = 0
 $errorCount = 0
 
+# Collect IDs of created User Stories so we can list them in the summary
+$createdStoryIds = [System.Collections.Generic.List[int]]::new()
+
 try {
     Write-Information "STAGE: Processing User Stories..."
     for ($i = 0; $i -lt $backlog.userStories.Count; $i++) {
@@ -171,6 +174,9 @@ try {
                 $backlog.userStories[$i] = Add-IdempotencyProperty -WorkItemObject $story -Id $storyId
                 $story = $backlog.userStories[$i]
                 
+                # Record created Story ID for summary list
+                $createdStoryIds.Add([int]$storyId) | Out-Null
+
                 $createdCount++
                 Write-Information "  [SUCCESS] User Story created with ID: $storyId."
             }
@@ -240,8 +246,19 @@ EXECUTION SUMMARY
   Items created: $createdCount
   Items skipped (already existed): $skippedCount
   Errors encountered: $errorCount
-========================================
+----------------------------------------
+List of US created
 "@
+
+    # If we created any User Stories, print each on its own line prefixed with '#'
+    if ($createdStoryIds.Count -gt 0) {
+        foreach ($id in $createdStoryIds) {
+            Write-Information "#$id"
+        }
+    }
+
+    Write-Information "========================================"
 }
+
 
 #endregion
