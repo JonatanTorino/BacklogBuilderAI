@@ -4,7 +4,7 @@ Este directorio contiene herramientas para la conversión de documentos `.docx` 
 
 ## Script Principal
 
--   `convert_docx_to_text.py`: Un script de Python que extrae el contenido textual de archivos `.docx` y lo guarda como `.txt`. Está diseñado para manejar correctamente caracteres especiales del español y utiliza codificación UTF-8 sin BOM.
+- `convert_docx_to_text.py`: Un script de Python que extrae el contenido textual de archivos `.docx` y lo guarda como `.txt`. Está diseñado para manejar correctamente caracteres especiales del español y utiliza codificación UTF-8 sin BOM.
 
 ## Instalación de Dependencias
 

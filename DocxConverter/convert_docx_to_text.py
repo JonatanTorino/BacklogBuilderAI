@@ -27,6 +27,7 @@ def convert_docx_to_text(docx_path):
             f.write(text)
 
         print(f"Successfully converted '{docx_path}' to '{txt_path}'")
+        return txt_path
 
     except FileNotFoundError as e:
         print(f"File not found: {e}")
@@ -36,6 +37,7 @@ def convert_docx_to_text(docx_path):
         print(f"Invalid docx file: {e}")
     except Exception as e:
         print(f"An unexpected error occurred while processing {docx_path}: {e}")
+    return None
 
 def process_directory(directory_path):
     """
@@ -46,11 +48,18 @@ def process_directory(directory_path):
         return
 
     print(f"Processing all .docx files in '{directory_path}'...")
+    converted_files = []
     for filename in os.listdir(directory_path):
         if filename.lower().endswith(".docx"):
             file_path = os.path.join(directory_path, filename)
-            convert_docx_to_text(file_path)
+            txt_path = convert_docx_to_text(file_path)
+            if txt_path:
+                converted_files.append(txt_path)
     print("Processing complete.")
+    if converted_files:
+        print("\nConverted files:")
+        for f in converted_files:
+            print(f"'{f}'")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
