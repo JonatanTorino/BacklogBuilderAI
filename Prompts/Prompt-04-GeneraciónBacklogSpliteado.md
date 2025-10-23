@@ -40,14 +40,14 @@ La respuesta del usuario (ej: "Funcionales" o "Refinamiento") determinará el ca
 
 ### TAREAS Refinamiento
 
-1. **Generación de Historias de Refinamiento (No Funcionales)**: Analiza las secciones `clarificationPoints` (con respuesta `null`) y `refinementMeetings`. Crea **una o más Historias de Usuario** dedicadas al **Refinamiento (Refinement)** para resolver estos Gaps de información, aplicando el **pensamiento crítico** sobre las lagunas.
+1. **Generación de Historias de Refinamiento (No Funcionales)**: Analiza las secciones `openQuestions` (con respuesta `null`) y `followUpMeetings`. Crea **una o más Historias de Usuario** dedicadas al **Refinamiento (Refinement)** para resolver estos Gaps de información, aplicando el **pensamiento crítico** sobre las lagunas.
     - **Título de Refinamiento**: Debe indicar claramente la actividad (ej: "Refinamiento: Definir Flujo de Autenticación").
-    - **Descripción**: Debe listar los `clarificationPoints` o `refinementMeetings` que busca resolver apoyandose en su contenido.
+    - **Descripción**: Debe listar las `openQuestions` o `followUpMeetings` que busca resolver apoyandose en su contenido.
     - **Criterios de Aceptación**: No son Gherkin. Deben ser **objetivos de *discovery*** verificables (ej: "La definición del servicio de 'Registro de Usuario' debe ser documentada y aprobada por el Stakeholder X").
 2. **Desglose de Tareas de Refinamiento (`tasks`)**: Desglosa estas historias en `tasks` de *discovery* y planificación.
     - **Tarea Inicial (Discovery)**:
-        - Si es una reunión: Tarea debe generar como resultado un **registro documentado** de la reunión.
-        - Si es investigación: Tarea debe generar como resultado un **resumen de lo investigado** aportando las **fuentes utilizadas**.
+        - Si es una reunión (`followUpMeetings`): Tarea debe generar como resultado un **registro documentado** de la reunión.
+        - Si es investigación (`openQuestions`): Tarea debe generar como resultado un **resumen de lo investigado** aportando las **fuentes utilizadas**.
     - **Tareas Obligatorias (Documentación/Planificación)**: Incluir siempre:
         - "Realizar la documentación de diseño" con el resultado de la tarea inicial.
         - "Creación del backlog con las actividades resultantes del refinamiento" (**Meta-tarea**).
