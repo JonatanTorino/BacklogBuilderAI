@@ -71,7 +71,7 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
 2. **Gestión de Ambigüedad**: Si la ruta de origen es ambigua (múltiples carpetas de insumo), se debe preguntar explícitamente al usuario por la ruta de guardado.
 3. **Convención de Nombres**: Para estandarizar los nombres de los archivos, se seguirá la siguiente convención:
 
-    **Formato:** `NN.Etapa.TópicoPrincipal.json`
+    **Formato:** `TópicoPrincipal.NN.Etapa.json`
 
     **Componentes:**
     - `NN.Etapa`: Un prefijo numérico y una palabra clave que identifican la etapa del flujo.
@@ -82,9 +82,9 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
     - `TópicoPrincipal`: Tres (3) palabras clave extraídas del tópico principal de la síntesis, unidas en formato `PascalCase` (sin espacios ni puntos).
 
     **Ejemplos:**
-    - `01.Sintesis.VisibilidadUIPatron.json`
-    - `01.SintesisConsciente.VisibilidadUIPatron.json`
-    - `02.Fusion.FactoriaLicenciasPersistencia.json`
-    - `03.Backlog.MaestroLicenciasUsuario.json`
+    - `VisibilidadUIPatron.01.Sintesis.json`
+    - `VisibilidadUIPatron.01.SintesisConsciente.json`
+    - `FactoriaLicenciasPersistencia.02.Fusion.json`
+    - `MaestroLicenciasUsuario.03.Backlog.json`
 
     Gemini debe proponer el nombre del archivo siguiendo esta convención antes de guardarlo.
