@@ -1,5 +1,4 @@
-.TmpFiles/
-.vscode/
-.BacklogsFile/
 *.log
-.SynthesisArchive/
+.vscode/
+.TmpFiles/
+.gemini/

@@ -18,7 +18,7 @@ Esta es la carpeta más importante para entender la lógica de transformación. 
 2. **`Prompt-02-FusionRespuestas.md`**: Una vez que las preguntas han sido respondidas, este prompt integra las respuestas claras en el resumen. Si una respuesta es ambigua, refina la pregunta original, permitiendo un proceso de clarificación iterativo.
 3. **`Prompt-03-GeneraciónBacklog.md`**: Actúa como un Product Owner y Tech Lead. Transforma el resumen refinado (que aún puede contener preguntas abiertas) en un backlog estructurado en formato JSON, creando tanto Historias de Usuario funcionales como Historias de Refinamiento para los gaps pendientes.
 
-### `Scripts`
+### `ScriptsForADO`
 
 Esta carpeta contiene los scripts de PowerShell que automatizan la carga del backlog a Azure DevOps.
 
@@ -29,13 +29,17 @@ Esta carpeta contiene los scripts de PowerShell que automatizan la carga del bac
 
 Esta carpeta contiene un script de Python (`convert_docx_to_text.py`) diseñado para convertir archivos `.docx` a formato de texto plano (`.txt`). Es útil para pre-procesar documentos de Word, extrayendo su contenido textual para que pueda ser utilizado como insumo para los prompts de los LLMs. Soporta la conversión de archivos individuales o de todos los archivos `.docx` dentro de un directorio, manejando correctamente caracteres especiales del español con codificación UTF-8.
 
-### `.BacklogsFile` (Work in Progress)
+### `KnowledgeBase/.BacklogsFile` (Work in Progress)
 
-En esta carpeta se almacenan los archivos JSON generados durante las distintas etapas del flujo de prompts. Aquí es donde encontrarás los backlogs listos para ser procesados por los scripts.
+Este directorio contiene los **backlogs finales** en formato JSON, listos para ser consumidos por los scripts de PowerShell y cargados en Azure DevOps. Cada archivo representa un conjunto de historias de usuario, tareas y elementos fuera de alcance para una funcionalidad o épica específica.
+
+### `KnowledgeBase/.SynthesisArchive` (Work in Progress)
+
+Este directorio archiva los **documentos de síntesis y fusión** intermedios generados por el prompt del LLM (`Prompt-02-FusionRespuestas.md`). Estos archivos JSON capturan el análisis inicial, la identificación de gaps de información y el refinamiento posterior con las respuestas del usuario.
 
 ### `.TmpFiles`
 
-Este directorio funciona como el punto de entrada del flujo. Aquí es donde se deben colocar los archivos de "insumos" (los textos crudos) que serán procesados por el primer prompt. También se guardan aquí los archivos JSON producidos por los prompts.
+Este directorio funciona como repositorio de archivos temporales de trabajo en progreso. Aquí es donde se deben colocar los archivos de "insumos" (los textos crudos) que serán procesados por el primer prompt. También se guardan aquí los archivos JSON producidos por los prompts.
 
 ### `Ideas`
 
@@ -54,14 +58,6 @@ Un espacio para la experimentación y el brainstorming. Contiene notas y version
 ---
 
 ## Protocolos de Interacción con Gemini
-
-### Protocolo de Ideación
-
-Si durante nuestras interacciones se genera una nueva idea, insight o propuesta de mejora para el flujo de trabajo de **BacklogBuilderAI**, Gemini debe seguir estos pasos:
-
-1. **Verbalizar la Idea**: Exponer la idea o insight de forma clara al usuario.
-2. **Solicitar Consentimiento**: Preguntar al usuario si desea que la idea sea documentada.
-3. **Documentar en la Carpeta `Ideas`**: Si el usuario está de acuerdo, crear un nuevo archivo Markdown (`.md`) en la carpeta `Ideas/`. El nombre del archivo debe ser descriptivo y resumir el contenido de la idea (ej: `Mejora_Cache_Prompts.md`).
 
 ### Protocolo de Almacenamiento de Resultados
 
@@ -88,3 +84,11 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
     - `MaestroLicenciasUsuario.03.Backlog.json`
 
     Gemini debe proponer el nombre del archivo siguiendo esta convención antes de guardarlo.
+
+### Protocolo de Ideación
+
+Si durante nuestras interacciones se genera una nueva idea, insight o propuesta de mejora para el flujo de trabajo de **BacklogBuilderAI**, Gemini debe seguir estos pasos:
+
+1. **Verbalizar la Idea**: Exponer la idea o insight de forma clara al usuario.
+2. **Solicitar Consentimiento**: Preguntar al usuario si desea que la idea sea documentada.
+3. **Documentar en la Carpeta `Ideas`**: Si el usuario está de acuerdo, crear un nuevo archivo Markdown (`.md`) en la carpeta `Ideas/`. El nombre del archivo debe ser descriptivo y resumir el contenido de la idea (ej: `Mejora_Cache_Prompts.md`).
