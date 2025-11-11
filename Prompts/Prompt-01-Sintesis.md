@@ -25,6 +25,7 @@ TAREA:
 
 REGLAS:
 
+* Al buscar los `NUEVOS_INSUMOS`, la búsqueda debe ser siempre recursiva a través de todos los subdirectorios.
 * No inventes información. Tu rol es señalar lo que falta o no está claro.
 * El objetivo es preparar un documento para que un humano lo valide y responda.
 * Sé crítico, identifica contradicciones entre documentos.
