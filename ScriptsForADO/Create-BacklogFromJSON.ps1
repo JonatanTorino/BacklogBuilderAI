@@ -203,7 +203,7 @@ try {
                         # Construir la Descripción de la Task en Markdown
                         $taskDescriptionParts = [System.Collections.Generic.List[string]]@()
                         if ($task.PSObject.Properties['description']) { $taskDescriptionParts.Add($task.description) } # Si la task tuviera descripción
-                        if ($task.PSObject.Properties['definitionOfDone']) { $taskDescriptionParts.Add("`n`n**Definition of Done:**`n$($task.definitionOfDone)") }
+                        if ($task.PSObject.Properties['definitionOfDone']) { $taskDescriptionParts.Add("**Definition of Done:**`n$($task.definitionOfDone)") }
                         $fullTaskDescription = $taskDescriptionParts -join ''
 
                         $taskId = New-WorkItem -Type 'Task' -Title $task.title `
@@ -259,6 +259,5 @@ List of US created
 
     Write-Information "========================================"
 }
-
 
 #endregion

@@ -37,6 +37,10 @@ Este directorio contiene los **backlogs finales** en formato JSON, listos para s
 
 Este directorio archiva los **documentos de síntesis y fusión** intermedios generados por el prompt del LLM (`Prompt-02-FusionRespuestas.md`). Estos archivos JSON capturan el análisis inicial, la identificación de gaps de información y el refinamiento posterior con las respuestas del usuario.
 
+### `KnowledgeBase/ScopeDocuments`
+
+Este directorio almacena los **documentos de alcance** en formato Markdown. Estos documentos se generan a partir de los archivos de síntesis/fusión (`.json`) y sirven como una descripción legible por humanos del resumen ejecutivo, las características clave y las restricciones acordadas antes de la generación del backlog.
+
 ### `.TmpFiles`
 
 Este directorio funciona como repositorio de archivos temporales de trabajo en progreso. Aquí es donde se deben colocar los archivos de "insumos" (los textos crudos) que serán procesados por el primer prompt. También se guardan aquí los archivos JSON producidos por los prompts.
@@ -52,7 +56,7 @@ Un espacio para la experimentación y el brainstorming. Contiene notas y version
 3. **Síntesis (LLM)**: Se utiliza `Prompt-01` con los insumos para generar un archivo JSON de síntesis en `.TmpFiles`.
 4. **Clarificación (Humano)**: Un analista edita el JSON, rellenando el campo `"answer"` dentro de los objetos del array `openQuestions`.
 5. **Fusión (LLM)**: Se utiliza `Prompt-02` con el JSON completado para obtener una versión refinada de los requisitos. El resultado es un nuevo JSON que integra las respuestas claras y mantiene las preguntas que necesitan más clarificación.
-6. **Generación de Backlog (LLM)**: Se utiliza `Prompt-03` con el JSON refinado para producir un archivo `final_backlog.json` en la carpeta `.BacklogsFile`.
+6. **Generación de Backlog (LLM)**: Se utiliza `Prompt-03` con el JSON refinado para producir un archivo `final_backlog.json` en la carpeta `.BacklogsFile`. Una vez usado, el archivo JSON de fusión de entrada se mueve a la carpeta `KnowledgeBase/.SynthesisArchive/`. Adicionalmente, se usa este mismo JSON para crear un documento de alcance en formato Markdown y guardarlo en `KnowledgeBase/ScopeDocuments/`.
 7. **Carga a ADO (Scripts)**: Se ejecuta el script `Invoke-BacklogCreation.ps1`, que lee el `final_backlog.json` de `.BacklogsFile` y crea los work items en Azure DevOps.
 
 ---
@@ -67,9 +71,10 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
 2. **Gestión de Ambigüedad**: Si la ruta de origen es ambigua (múltiples carpetas de insumo), se debe preguntar explícitamente al usuario por la ruta de guardado.
 3. **Convención de Nombres**: Para estandarizar los nombres de los archivos, se seguirá la siguiente convención:
 
-    **Formato:** `TópicoPrincipal.NN.Etapa.json`
+    **Formato:** `YYYYMMDD.TópicoPrincipal.NN.Etapa.json`
 
     **Componentes:**
+    - `YYYYMMDD`: Representa la fecha de creación como año (YYYY) mes (MM) día (DD).
     - `NN.Etapa`: Un prefijo numérico y una palabra clave que identifican la etapa del flujo.
         - `01.Sintesis`: Para la salida de `Prompt-01-Sintesis.md`.
         - `01.SintesisConsciente`: Para la salida de `Prompt-01-Consciente.md`.
@@ -78,10 +83,10 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
     - `TópicoPrincipal`: Tres (3) palabras clave extraídas del tópico principal de la síntesis, unidas en formato `PascalCase` (sin espacios ni puntos).
 
     **Ejemplos:**
-    - `VisibilidadUIPatron.01.Sintesis.json`
-    - `VisibilidadUIPatron.01.SintesisConsciente.json`
-    - `FactoriaLicenciasPersistencia.02.Fusion.json`
-    - `MaestroLicenciasUsuario.03.Backlog.json`
+    - `20251031.VisibilidadUIPatron.01.Sintesis.json`
+    - `20251031.VisibilidadUIPatron.01.SintesisConsciente.json`
+    - `20251102.FactoriaLicenciasPersistencia.02.Fusion.json`
+    - `20251103.MaestroLicenciasUsuario.03.Backlog.json`
 
     Gemini debe proponer el nombre del archivo siguiendo esta convención antes de guardarlo.
 
