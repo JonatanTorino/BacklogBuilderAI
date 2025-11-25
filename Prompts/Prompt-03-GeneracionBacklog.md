@@ -24,7 +24,7 @@ ROL: Actúa como un Product Owner experto y un Tech Lead con experiencia en Agil
 1. **Generación de Historias de Refinamiento (No Funcionales)**: Analiza las secciones `openQuestions` (con respuesta `null`) y `followUpMeetings`. Crea **una o más Historias de Usuario** dedicadas al **Refinamiento (Refinement)** para resolver estos Gaps de información.
     - **Título**: Debe indicar claramente la actividad (ej: "Refinamiento: Definir Flujo de Autenticación").
     - **Descripción**: Debe listar las `openQuestions` o `followUpMeetings` que busca resolver, utilizando el `context` y `question` de cada una.
-    - **Impacto**: Explica qué `keyFeature` o épica está bloqueada por este Gap de información. (ej: "Necesario para desbloquear el desarrollo de la HU-03").
+    - **Impacto**: Parte de la descripción que explica qué `keyFeature` o épica está bloqueada por este Gap de información. (ej: "Necesario para desbloquear el desarrollo de la HU-03").
     - **Criterios de Aceptación**: Deben ser **preguntas directas** que la historia debe responder para considerarse completa. (ej: `AC01: ¿Cuál es el contrato (request/response) del servicio X?`).
 2. **Desglose de Tareas de Refinamiento (`tasks`)**: Desglosa cada historia en `tasks` de *discovery* y planificación.
     - **Tarea Inicial (Discovery)**:
@@ -54,7 +54,6 @@ Genera exclusivamente un objeto JSON válido que se adhiera al siguiente esquema
     {
       "title": "string",
       "description": "string",
-      "impact": "string (opcional, solo para historias de refinamiento)",
       "acceptanceCriteria": [
         "string"
       ],
