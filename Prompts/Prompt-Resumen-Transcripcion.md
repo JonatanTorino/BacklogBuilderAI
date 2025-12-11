@@ -25,95 +25,177 @@ yo lo voy a usar porque no necesito</v>
 2. **Analiza el contexto general** de la reunión: ¿De qué se habló? ¿Cuál fue el propósito?
 3. **Identifica las decisiones tomadas** durante la reunión, especificando quién las propuso o validó.
 4. **Extrae los accionables** (tareas, compromisos, próximos pasos) y asigna responsables cuando sea posible.
+5. **Captura consideraciones extras** que sean clave para el contexto de la reunión, tales como:
+   - **Bloqueantes**: Impedimentos que están frenando el progreso
+   - **Dependencias**: Relaciones con otros equipos, sistemas o tareas externas
+   - **Riesgos**: Amenazas potenciales identificadas
+   - **Supuestos**: Asunciones importantes que se están tomando
+   - **Restricciones**: Limitaciones técnicas, de tiempo o recursos
+   - Cualquier otra consideración relevante que no encaje en las categorías anteriores
 
 ## REGLAS
 
 * No inventes información que no esté en la transcripción.
-* Si un accionable no tiene un responsable explícito, déjalo como `"TBD"` (To Be Determined).
-* Si no se tomaron decisiones claras, indica `"No se registraron decisiones explícitas"`.
+* Si un accionable no tiene un responsable explícito, déjalo como `TBD` (To Be Determined).
+* Si no se tomaron decisiones claras, indica `No se registraron decisiones explícitas`.
 * Sé conciso pero completo. Captura la esencia sin perder detalles importantes.
 * Si hay contradicciones o cambios de opinión durante la reunión, refléjalos en el contexto o decisiones.
+* Si no hay consideraciones extras de algún tipo específico (bloqueantes, dependencias, etc.), simplemente omite esa subsección.
 
 ## FORMATO DE SALIDA
 
-Genera únicamente un objeto JSON válido que siga esta estructura exacta:
+Genera un documento en formato **Markdown** estructurado y fácil de leer, siguiendo esta plantilla:
 
-```json
-{
-  "meetingMetadata": {
-    "date": "string o null", // Fecha de la reunión si está disponible en el nombre del archivo o contenido
-    "duration": "string o null", // Duración aproximada si se puede inferir de los timestamps
-    "source": "string" // Nombre del archivo fuente
-  },
-  "participants": [
-    "string" // Nombre de cada participante
-  ],
-  "context": "string", // Resumen ejecutivo del propósito y temas tratados en la reunión
-  "decisions": [
-    {
-      "decision": "string", // Descripción de la decisión tomada
-      "proposedBy": "string o null", // Quién propuso o validó la decisión
-      "rationale": "string o null" // Razón o justificación si está disponible
-    }
-  ],
-  "actionItems": [
-    {
-      "action": "string", // Descripción del accionable
-      "responsible": "string", // Nombre del responsable o "TBD"
-      "deadline": "string o null", // Fecha límite si se mencionó
-      "context": "string o null" // Contexto adicional si es relevante
-    }
-  ],
-  "openTopics": [
-    "string" // Temas que quedaron pendientes o sin resolver
-  ]
-}
+```markdown
+# Resumen de Reunión: [Título o Tópico Principal]
+
+**Fecha**: [DD/MM/YYYY o "No especificada"]
+**Duración**: [Duración aproximada o "No especificada"]
+**Fuente**: [Nombre del archivo]
+
+---
+
+## 👥 Participantes
+
+- [Nombre Participante 1]
+- [Nombre Participante 2]
+- [Nombre Participante 3]
+
+---
+
+## 📋 Contexto
+
+[Resumen ejecutivo del propósito y temas tratados en la reunión. Incluir el objetivo principal y los temas clave discutidos.]
+
+---
+
+## ✅ Decisiones
+
+### [Título de la Decisión 1]
+- **Propuesta por**: [Nombre o "No especificado"]
+- **Justificación**: [Razón o contexto de la decisión]
+
+### [Título de la Decisión 2]
+- **Propuesta por**: [Nombre o "No especificado"]
+- **Justificación**: [Razón o contexto de la decisión]
+
+> **Nota**: Si no se tomaron decisiones explícitas, indicar: _"No se registraron decisiones explícitas en esta reunión."_
+
+---
+
+## 📌 Accionables
+
+| # | Acción | Responsable | Fecha Límite | Contexto |
+|---|--------|-------------|--------------|----------|
+| 1 | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
+| 2 | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
+
+---
+
+## 🔍 Consideraciones Extras
+
+### 🚧 Bloqueantes
+- [Descripción del bloqueante 1]
+- [Descripción del bloqueante 2]
+
+### 🔗 Dependencias
+- [Descripción de la dependencia 1]
+- [Descripción de la dependencia 2]
+
+### ⚠️ Riesgos
+- [Descripción del riesgo 1]
+- [Descripción del riesgo 2]
+
+### 💡 Supuestos
+- [Descripción del supuesto 1]
+- [Descripción del supuesto 2]
+
+### 🔒 Restricciones
+- [Descripción de la restricción 1]
+- [Descripción de la restricción 2]
+
+### 📝 Otras Consideraciones
+- [Cualquier otra consideración relevante]
+
+> **Nota**: Solo incluir las subsecciones que apliquen. Si no hay bloqueantes, dependencias, riesgos, etc., omitir esa subsección.
+
+---
+
+## 🔄 Temas Pendientes
+
+- [Tema pendiente 1]
+- [Tema pendiente 2]
+- [Tema pendiente 3]
+
+> **Nota**: Si no hay temas pendientes, indicar: _"No se identificaron temas pendientes."_
 ```
 
 ## EJEMPLO DE SALIDA
 
-```json
-{
-  "meetingMetadata": {
-    "date": "2025-12-10",
-    "duration": "45 minutos",
-    "source": "reunion_equipo_producto.vtt"
-  },
-  "participants": [
-    "Marglorie Colina",
-    "Juan Pérez",
-    "Ana García"
-  ],
-  "context": "Reunión de planificación del sprint 23. Se discutió el alcance de las nuevas funcionalidades del módulo de reportes y se priorizaron las historias de usuario pendientes.",
-  "decisions": [
-    {
-      "decision": "Se implementará el reporte de ventas mensuales en el sprint actual",
-      "proposedBy": "Juan Pérez",
-      "rationale": "Es la funcionalidad más solicitada por los clientes"
-    },
-    {
-      "decision": "Se pospone la integración con el sistema de CRM para el próximo sprint",
-      "proposedBy": "Ana García",
-      "rationale": "Dependencia externa no resuelta con el equipo de infraestructura"
-    }
-  ],
-  "actionItems": [
-    {
-      "action": "Crear las historias de usuario para el reporte de ventas",
-      "responsible": "Marglorie Colina",
-      "deadline": "2025-12-12",
-      "context": "Incluir criterios de aceptación y mockups"
-    },
-    {
-      "action": "Coordinar reunión con equipo de infraestructura",
-      "responsible": "Ana García",
-      "deadline": "2025-12-15",
-      "context": "Para resolver dependencias de la integración con CRM"
-    }
-  ],
-  "openTopics": [
-    "Definir estrategia de migración de datos históricos",
-    "Validar requisitos de performance con el equipo de QA"
-  ]
-}
+```markdown
+# Resumen de Reunión: Planificación Sprint 23 - Módulo de Reportes
+
+**Fecha**: 10/12/2025
+**Duración**: 45 minutos
+**Fuente**: reunion_equipo_producto.vtt
+
+---
+
+## 👥 Participantes
+
+- Marglorie Colina
+- Juan Pérez
+- Ana García
+
+---
+
+## 📋 Contexto
+
+Reunión de planificación del sprint 23. Se discutió el alcance de las nuevas funcionalidades del módulo de reportes y se priorizaron las historias de usuario pendientes. El equipo evaluó la viabilidad técnica de implementar el reporte de ventas mensuales y analizó las dependencias con el equipo de infraestructura para la integración con el sistema de CRM.
+
+---
+
+## ✅ Decisiones
+
+### Implementación del Reporte de Ventas Mensuales
+- **Propuesta por**: Juan Pérez
+- **Justificación**: Es la funcionalidad más solicitada por los clientes y tiene el mayor impacto en el negocio.
+
+### Postergación de la Integración con CRM
+- **Propuesta por**: Ana García
+- **Justificación**: Dependencia externa no resuelta con el equipo de infraestructura. Se requiere coordinación adicional antes de proceder.
+
+---
+
+## 📌 Accionables
+
+| # | Acción | Responsable | Fecha Límite | Contexto |
+|---|--------|-------------|--------------|----------|
+| 1 | Crear las historias de usuario para el reporte de ventas | Marglorie Colina | 12/12/2025 | Incluir criterios de aceptación y mockups |
+| 2 | Coordinar reunión con equipo de infraestructura | Ana García | 15/12/2025 | Para resolver dependencias de la integración con CRM |
+| 3 | Validar requisitos de performance con QA | TBD | N/A | Definir umbrales aceptables de tiempo de respuesta |
+
+---
+
+## 🔍 Consideraciones Extras
+
+### 🔗 Dependencias
+- **Equipo de Infraestructura**: Se requiere coordinación para resolver la integración con el sistema de CRM antes del próximo sprint.
+- **Equipo de QA**: Necesitamos validación de requisitos de performance antes de comenzar el desarrollo.
+
+### ⚠️ Riesgos
+- **Migración de datos históricos**: No se ha definido una estrategia clara, lo que podría impactar el cronograma si no se resuelve pronto.
+- **Capacidad del equipo**: Con las vacaciones de fin de año, podríamos tener menos recursos disponibles de lo esperado.
+
+### 💡 Supuestos
+- Se asume que el equipo de infraestructura podrá resolver las dependencias en un plazo de 2 semanas.
+- Se asume que los mockups del reporte de ventas serán aprobados por el cliente sin cambios mayores.
+
+---
+
+## 🔄 Temas Pendientes
+
+- Definir estrategia de migración de datos históricos
+- Validar requisitos de performance con el equipo de QA
+- Confirmar disponibilidad del equipo durante el período de vacaciones
 ```
