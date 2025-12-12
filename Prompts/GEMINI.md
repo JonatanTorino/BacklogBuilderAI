@@ -13,3 +13,26 @@ Este directorio alberga los prompts maestros que guían a los LLMs en cada etapa
 - **`Prompt-ADR-Generator.md`**: Generador de registros de decisiones de arquitectura.
 - **`Prompt-Limpieza-VTT.md`**: Utilidad para limpiar transcripciones.
 - **`Prompt-Resumen-Transcripcion.md`**: Generador de resúmenes de reuniones.
+
+## Protocolo de Gestión de Prompts
+
+Cada vez que se añada un nuevo archivo de prompt a este directorio, se debe seguir el siguiente protocolo:
+
+1.  **Crear Comando Personalizado**: Se debe crear un archivo de configuración `.toml` en la ruta `.gemini/commands/Prompt/`.
+2.  **Configuración del Comando**: El archivo `.toml` debe definir un comando que automatice el uso del nuevo prompt, utilizando las herramientas disponibles (como `read_file`, `write_file`, etc.) para procesar los insumos correspondientes.
+3.  **Registro**: Se debe actualizar la sección "Comandos Disponibles" en este archivo (`Prompts/GEMINI.md`) para reflejar la asociación entre el nuevo comando y el prompt.
+
+## Comandos Disponibles
+
+A continuación se listan los comandos personalizados existentes y su prompt asociado:
+
+| Comando | Prompt Asociado | Descripción |
+| :--- | :--- | :--- |
+| `/Prompt/sintesis` | `Prompt-01-Sintesis.md` | Analiza insumos, sintetiza requisitos y detecta gaps. |
+| `/Prompt/sintesis-consciente` | `Prompt-01-Consciente.md` | Síntesis avanzada que contrasta nuevos insumos con el contexto histórico. |
+| `/Prompt/fusion` | `Prompt-02-FusionRespuestas.md` | Integra respuestas humanas a los gaps identificados en la síntesis. |
+| `/Prompt/backlog` | `Prompt-03-GeneracionBacklog.md` | Genera un backlog completo (funcional y refinamiento) desde la síntesis final. |
+| `/Prompt/backlog-spliteado` | `Prompt-04-GeneracionBacklogSpliteado.md` | Genera backlogs específicos (solo funcionales o solo refinamiento). |
+| `/Prompt/adr` | `Prompt-ADR-Generator.md` | Genera registros de decisiones de arquitectura (ADR) desde transcripciones. |
+| `/Prompt/limpiar-vtt` | `Prompt-Limpieza-VTT.md` | Limpia metadatos técnicos de archivos de transcripción .vtt. |
+| `/Prompt/resumir` | `Prompt-Resumen-Transcripcion.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |

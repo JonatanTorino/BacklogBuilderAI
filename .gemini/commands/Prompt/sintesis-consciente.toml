@@ -1,0 +1,17 @@
+description = "Orquestador de Síntesis con Conciencia Histórica. Requiere contexto histórico y nuevos insumos."
+prompt = """
+Este comando requiere identificar dos fuentes de información:
+1. Contexto Histórico (archivos JSON de síntesis previas).
+2. Nuevos Insumos (documentos a procesar).
+
+Argumentos recibidos: {{args}}
+
+Pasos:
+1. Determina las rutas para el Contexto Histórico y los Nuevos Insumos basándote en los argumentos o pregúntale al usuario si hay ambigüedad.
+2. Lee los archivos del Contexto Histórico.
+3. Lee los archivos de los Nuevos Insumos.
+4. Lee las instrucciones base de @Prompts/Prompt-01-Sintesis.md (serán usadas como input INSTRUCCIONES_DE_SINTESIS).
+5. Aplica el prompt orquestador: @Prompts/Prompt-01-Consciente.md
+6. Genera el nombre de salida: `YYYYMMDD.TópicoPrincipal.01.SintesisConsciente.json`.
+7. Guarda el resultado.
+"""

@@ -1,4 +1,5 @@
 /.git/
-/.vscode/
 *.log
 node_modules/
+.kilocode/mcp.json
+.vscode/mcp.json

@@ -1,0 +1,8 @@
+description = "Limpia archivos de transcripción .vtt eliminando metadatos."
+prompt = """
+Recibe archivo o directorio: {{args}}
+
+1. Si es un directorio, lista los archivos .vtt. Si es un archivo, verifica su extensión.
+2. Para cada archivo, aplica el prompt: @Prompts/Prompt-Limpieza-VTT.md
+3. Guarda los archivos limpios con el sufijo `_limpio.txt` en la misma ubicación.
+"""

@@ -1,0 +1,9 @@
+description = "Analista de Refinamiento. Integra respuestas humanas a los gaps en un archivo de síntesis."
+prompt = """
+Recibe el archivo de síntesis con respuestas: {{args}}
+
+1. Lee el contenido del archivo JSON proporcionado.
+2. Aplica el prompt: @Prompts/Prompt-02-FusionRespuestas.md
+3. Genera el nombre de salida: `YYYYMMDD.TópicoPrincipal.02.Fusion.json`.
+4. Guarda el resultado.
+"""

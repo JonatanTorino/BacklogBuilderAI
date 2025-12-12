@@ -1,0 +1,10 @@
+description = "Genera backlog separado (Funcional o Refinamiento). Pregunta al usuario qué tipo generar."
+prompt = """
+Recibe el archivo de síntesis final: {{args}}
+
+1. Lee el archivo JSON.
+2. Pregunta explícitamente al usuario si desea generar historias "Funcionales" o de "Refinamiento".
+3. Aplica el prompt: @Prompts/Prompt-04-GeneracionBacklogSpliteado.md
+4. Genera el nombre de salida: `YYYYMMDD.TópicoPrincipal.03.Backlog.[Tipo].json`.
+5. Guarda el resultado.
+"""

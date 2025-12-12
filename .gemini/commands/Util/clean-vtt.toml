@@ -1,0 +1,7 @@
+prompt = """
+Recibe el directorio objetivo (opcional, por defecto usa `.TmpFiles\FE` si no se especifica, pero el script actualmente tiene harcodeado el path, así que este comando solo ejecuta el script).
+
+Pasos:
+1. Ejecuta el script de Python: `python PythonScripts/clean_vtt.py`
+2. El script procesará los archivos en la carpeta configurada y generará los `_limpio.txt`.
+"""description = "Limpia archivos .vtt usando script de Python (sin LLM). Más rápido y económico."

@@ -1,0 +1,20 @@
+description = "Agrega un servidor MCP por URL a la configuración del proyecto. Uso: /add_mcp <nombre> <url> [sse]"
+prompt = """
+Tu tarea es agregar un servidor MCP a la configuración del proyecto ejecutando el comando CLI correspondiente.
+
+Argumentos recibidos: {{args}}
+
+Pasos a seguir:
+1.  **Validación**: Verifica que se hayan proporcionado al menos los dos argumentos obligatorios: `nombre` y `URL`. Si faltan, explica el uso correcto del comando.
+2.  **Determinación del Transporte**:
+    -   Analiza si existe un tercer argumento.
+    -   Si el tercer argumento es "sse" (ignorando mayúsculas/minúsculas), establece el modo de transporte a `sse`.
+    -   De lo contrario (si no existe o es cualquier otro valor), establece el modo de transporte a `http` (que corresponde a Streamable HTTP).
+3.  **Ejecución**:
+    -   Utiliza la herramienta `run_shell_command` para ejecutar el comando de configuración de Gemini.
+    -   Sintaxis del comando: `gemini mcp add --scope project --transport <MODO> <NOMBRE> <URL>`
+
+Ejemplos de lógica:
+-   `args: "mi-server http://localhost:3000"` -> `gemini mcp add --scope project --transport http mi-server http://localhost:3000`
+-   `args: "event-server http://localhost:8080 sse"` -> `gemini mcp add --scope project --transport sse event-server http://localhost:8080`
+"""

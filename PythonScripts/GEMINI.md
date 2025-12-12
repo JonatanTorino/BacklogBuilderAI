@@ -14,6 +14,21 @@ Limpia archivos de transcripción en formato WebVTT (`.vtt`). Elimina metadatos,
 - **Uso**: Se ejecuta sobre un directorio predefinido (actualmente configurado para `.TmpFiles\FE`).
 - **Salida**: Genera archivos `*_limpio.txt`.
 
+## Protocolo de Gestión de Scripts
+
+Cada vez que se añada un nuevo script de utilidad a este directorio, se debe considerar su integración con el flujo de trabajo de Gemini:
+
+1.  **Crear Comando Personalizado**: Si el script es de uso frecuente, se recomienda crear un archivo de configuración `.toml` en `.gemini/commands/Util/` (o la ruta correspondiente) para facilitar su ejecución.
+2.  **Registro**: Se debe actualizar la sección "Comandos Disponibles" en este archivo para documentar la asociación entre el script y el comando de Gemini.
+
+## Comandos Disponibles
+
+A continuación se listan los comandos personalizados que utilizan los scripts de este directorio:
+
+| Comando                | Script Asociado           | Descripción                                                 |
+| :--------------------- | :------------------------ | :---------------------------------------------------------- |
+| `/Util/clean-vtt`      | `clean_vtt.py`            | Limpia archivos .vtt eliminando metadatos (versión Python). |
+| `/Util/convertir-docx` | `convert_docx_to_text.py` | Convierte archivos .docx a .txt (individual o directorio).  |
 
 ## Gestión de Scripts
 

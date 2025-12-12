@@ -1,0 +1,9 @@
+description = "Product Owner / Tech Lead. Genera el backlog completo (funcional + refinamiento) desde una síntesis final."
+prompt = """
+Recibe el archivo de síntesis final (fusionado): {{args}}
+
+1. Lee el archivo JSON.
+2. Aplica el prompt: @Prompts/Prompt-03-GeneracionBacklog.md
+3. Genera el nombre de salida: `YYYYMMDD.TópicoPrincipal.03.Backlog.json`.
+4. Guarda el resultado.
+"""

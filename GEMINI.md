@@ -50,3 +50,7 @@ Si durante nuestras interacciones se genera una nueva idea, insight o propuesta 
 1. **Verbalizar la Idea**: Exponer la idea o insight de forma clara al usuario.
 2. **Solicitar Consentimiento**: Preguntar al usuario si desea que la idea sea documentada.
 3. **Documentar en la Carpeta `Ideas`**: Si el usuario está de acuerdo, crear un nuevo archivo Markdown (`.md`) en la carpeta `Ideas/`. El nombre del archivo debe ser descriptivo y resumir el contenido de la idea (ej: `Mejora_Cache_Prompts.md`).
+
+### Protocolo de Configuración MCP (Model Context Protocol)
+
+El objetivo es usar la lista de MCPs que posee GEMINI. Por consiguiente, la consola de Gemini CLI debe ignorar cualquier configuración de MCP proveniente de archivos de configuración de agentes externos que no sean el propio GEMINI CLI, evitando conflictos y garantizando que solo se utilicen las herramientas designadas.

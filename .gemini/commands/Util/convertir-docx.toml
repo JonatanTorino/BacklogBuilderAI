@@ -1,0 +1,11 @@
+description = "Convierte documentos Word (.docx) a texto plano (.txt). Acepta un archivo o un directorio."
+prompt = """
+Recibe la ruta de archivo o directorio: {{args}}
+
+Este comando utiliza el script de utilidad existente en el proyecto.
+
+Pasos:
+1. Ejecuta el script de Python `PythonScripts/convert_docx_to_text.py` pasando la ruta proporcionada como argumento.
+   Comando: `python PythonScripts/convert_docx_to_text.py "{{args}}"`
+2. El script se encargará de detectar si es archivo o directorio y generar los archivos .txt correspondientes en la misma ubicación.
+"""

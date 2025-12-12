@@ -1,0 +1,8 @@
+description = "Generador de ADRs (Architecture Decision Records) a partir de transcripciones."
+prompt = """
+Recibe archivo o directorio de transcripciones: {{args}}
+
+1. Lee el contenido de los archivos.
+2. Aplica el prompt: @Prompts/Prompt-ADR-Generator.md
+3. Guarda el resultado en formato JSON y Markdown según especifica el prompt, usando nombres descriptivos.
+"""
