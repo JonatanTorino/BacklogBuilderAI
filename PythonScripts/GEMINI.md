@@ -10,9 +10,10 @@ Convierte documentos de Word (`.docx`) a texto plano (`.txt`).
 - **Dependencias**: `python-docx`
 
 ### 2. `clean_vtt.py`
-Limpia archivos de transcripción en formato WebVTT (`.vtt`). Elimina metadatos, timestamps y IDs, conservando solo el diálogo formateado por orador.
-- **Uso**: Se ejecuta sobre un directorio predefinido (actualmente configurado para `.TmpFiles\FE`).
-- **Salida**: Genera archivos `*_limpio.txt`.
+Limpia archivos `.vtt`, organiza y renombra automáticamente.
+- **Uso**: `python clean_vtt.py "/ruta/al/directorio"` (Requerido).
+- **Lógica**: Crea carpetas `vtt-originales/` y `vtt-limpios/`. Recorta el nombre original hasta el último guion `-` y añade `_limpio.txt`.
+- **Salida**: Mueve el original a `vtt-originales` y guarda el resultado en `vtt-limpios`.
 
 ## Protocolo de Gestión de Scripts
 
@@ -27,7 +28,7 @@ A continuación se listan los comandos personalizados que utilizan los scripts d
 
 | Comando                | Script Asociado           | Descripción                                                 |
 | :--------------------- | :------------------------ | :---------------------------------------------------------- |
-| `/Util/clean-vtt`      | `clean_vtt.py`            | Limpia archivos .vtt eliminando metadatos (versión Python). |
+| `/Util/clean-vtt`      | `clean_vtt.py`            | Limpia, organiza y renombra archivos .vtt automáticamente. |
 | `/Util/convertir-docx` | `convert_docx_to_text.py` | Convierte archivos .docx a .txt (individual o directorio).  |
 
 ## Gestión de Scripts

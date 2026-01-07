@@ -3,6 +3,10 @@ prompt = """
 Recibe archivo o directorio: {{args}}
 
 1. Si es un directorio, lista los archivos .vtt. Si es un archivo, verifica su extensión.
-2. Para cada archivo, aplica el prompt: @Prompts/Prompt-Limpieza-VTT.md
-3. Guarda los archivos limpios con el sufijo `_limpio.txt` en la misma ubicación.
+2. Asegúrate de que existan los subdirectorios `vtt-originales` y `vtt-limpios` en el directorio de trabajo. Si no existen, créalos.
+3. Para cada archivo, tienes dos opciones:
+    a. **Opción Recomendada:** Ejecuta el script de utilidad `python PythonScripts/clean_vtt.py "ruta/al/directorio"`. Este script ya realiza la limpieza, crea las carpetas y mueve los archivos automáticamente. Si eliges esta opción, el proceso termina aquí.
+    b. **Opción Manual (LLM):** Aplica el prompt @Prompts/Prompt-Limpieza-VTT.md. Si eliges esta opción, debes continuar con los pasos 4 y 5.
+4. (Solo Opción Manual) Guarda los archivos limpios con el sufijo `_limpio.txt` en la carpeta `vtt-limpios`.
+5. (Solo Opción Manual) Mueve el archivo original .vtt a la carpeta `vtt-originales`.
 """

@@ -92,8 +92,18 @@ def process_vtt_file(file_path):
 
     return interventions
 
+import shutil
+import argparse
+
 def main():
-    target_dir = r".TmpFiles\FE"
+    parser = argparse.ArgumentParser(description="Limpia archivos .vtt y organiza los archivos.")
+    parser.add_argument("directory", help="Directorio objetivo que contiene los archivos .vtt")
+    args = parser.parse_args()
+
+    target_dir = args.directory
+    originals_dir = os.path.join(target_dir, "vtt-originales")
+    clean_dir = os.path.join(target_dir, "vtt-limpios")
+
     output_report = {
         "processedFiles": [],
         "summary": {
@@ -108,7 +118,14 @@ def main():
         print(f"Directory not found: {target_dir}")
         return
 
-    files = [f for f in os.listdir(target_dir) if f.endswith('.vtt')]
+    # Crear directorios de organización si no existen
+    if not os.path.exists(originals_dir):
+        os.makedirs(originals_dir)
+    if not os.path.exists(clean_dir):
+        os.makedirs(clean_dir)
+
+    # Listar archivos en el directorio raíz (ignorando los subdirectorios recién creados)
+    files = [f for f in os.listdir(target_dir) if f.endswith('.vtt') and os.path.isfile(os.path.join(target_dir, f))]
     output_report["summary"]["totalFilesProcessed"] = len(files)
 
     for filename in files:
@@ -131,8 +148,17 @@ def main():
 
             interventions = process_vtt_file(file_path)
             
-            output_filename = filename.replace('.vtt', '_limpio.txt')
-            output_path = os.path.join(target_dir, output_filename)
+            # Lógica para recortar el nombre del archivo hasta el último guion
+            base_name = os.path.splitext(filename)[0]
+            last_dash_index = base_name.rfind('-')
+            
+            if last_dash_index != -1:
+                clean_name = base_name[:last_dash_index]
+            else:
+                clean_name = base_name
+                
+            output_filename = f"{clean_name}_limpio.txt"
+            output_path = os.path.join(clean_dir, output_filename)
             
             unique_speakers = set()
             with open(output_path, 'w', encoding='utf-8') as f:
@@ -145,9 +171,14 @@ def main():
                     f.write(f"<v {intervention['speaker']}>{clean_text}</v>\n\n")
                     unique_speakers.add(intervention['speaker'])
             
+            # Mover archivo original a la carpeta de originales
+            original_dest_path = os.path.join(originals_dir, filename)
+            shutil.move(file_path, original_dest_path)
+
             output_report["processedFiles"].append({
                 "inputFile": filename,
                 "outputFile": output_filename,
+                "movedTo": original_dest_path,
                 "status": "success",
                 "interventionsCount": len(interventions),
                 "uniqueSpeakers": list(unique_speakers)
