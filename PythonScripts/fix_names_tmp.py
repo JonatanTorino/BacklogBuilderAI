@@ -4,7 +4,8 @@ import re
 def rename_files(root_dir):
     for root, dirs, files in os.walk(root_dir):
         for filename in files:
-            if not (filename.endswith('.vtt') or filename.endswith('.txt')):
+            # No renombrar archivos .vtt (originales). Solo .txt (limpios).
+            if not filename.endswith('.txt'):
                 continue
             
             file_path = os.path.join(root, filename)

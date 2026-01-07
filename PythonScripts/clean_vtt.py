@@ -130,6 +130,7 @@ def main():
 
     for filename in files:
         file_path = os.path.join(target_dir, filename)
+        original_dest_path = os.path.join(originals_dir, filename)
         try:
             # Pre-chequeo de etiquetas <v>
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -137,9 +138,14 @@ def main():
                 if "<v " not in content:
                     status = "warning"
                     message = "No se encontraron etiquetas de orador (<v>)"
+                    
+                    # Mover archivo original aunque tenga warning
+                    shutil.move(file_path, original_dest_path)
+                    
                     output_report["processedFiles"].append({
                         "inputFile": filename,
                         "outputFile": None,
+                        "movedTo": original_dest_path,
                         "status": status,
                         "message": message
                     })
