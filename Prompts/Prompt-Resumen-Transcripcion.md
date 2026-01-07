@@ -23,9 +23,10 @@ yo lo voy a usar porque no necesito</v>
 
 1. **Identifica a todos los participantes** de la reunión basándote en las etiquetas `<v>`.
 2. **Analiza el contexto general** de la reunión: ¿De qué se habló? ¿Cuál fue el propósito?
-3. **Identifica las decisiones tomadas** durante la reunión, especificando quién las propuso o validó.
-4. **Extrae los accionables** (tareas, compromisos, próximos pasos) y asigna responsables cuando sea posible.
-5. **Captura consideraciones extras** que sean clave para el contexto de la reunión, tales como:
+3. **Genera un título descriptivo** para la reunión que refleje el tema principal o el objetivo clave discutido. **NO** uses el nombre del archivo como título.
+4. **Identifica las decisiones tomadas** durante la reunión, especificando quién las propuso o validó.
+5. **Extrae los accionables** (tareas, compromisos, próximos pasos) y asigna responsables cuando sea posible.
+6. **Captura consideraciones extras** que sean clave para el contexto de la reunión, tales como:
    - **Bloqueantes**: Impedimentos que están frenando el progreso
    - **Dependencias**: Relaciones con otros equipos, sistemas o tareas externas
    - **Riesgos**: Amenazas potenciales identificadas
@@ -47,7 +48,7 @@ yo lo voy a usar porque no necesito</v>
 Genera un documento en formato **Markdown** estructurado y fácil de leer, siguiendo esta plantilla:
 
 ```markdown
-# Resumen de Reunión: [Título o Tópico Principal]
+# Resumen de Reunión: [Título Descriptivo Generado - NO USAR NOMBRE DE ARCHIVO]
 
 **Fecha**: [DD/MM/YYYY o "No especificada"]
 **Duración**: [Duración aproximada o "No especificada"]
