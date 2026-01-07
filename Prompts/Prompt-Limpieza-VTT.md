@@ -141,9 +141,11 @@ Si un archivo `.vtt` no contiene etiquetas `<v>`, devuelve una advertencia:
 ## INSTRUCCIONES DE EJECUCIÓN
 
 1. **Identifica todos los archivos `.vtt`** en el directorio especificado.
-2. **Procesa cada archivo** aplicando las reglas de limpieza.
-3. **Guarda cada archivo limpio** con el sufijo `_limpio.txt` en el mismo directorio.
-4. **Genera un reporte** al finalizar indicando:
+2. **Crea las carpetas** `vtt-originales` y `vtt-limpios` si no existen.
+3. **Procesa cada archivo** aplicando las reglas de limpieza.
+4. **Guarda cada archivo limpio** con el sufijo `_limpio.txt` en la carpeta `vtt-limpios`.
+5. **Mueve el archivo original** a la carpeta `vtt-originales`.
+6. **Genera un reporte** al finalizar indicando:
    - Archivos procesados exitosamente
    - Archivos con advertencias
    - Total de intervenciones extraídas por archivo

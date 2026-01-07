@@ -1,7 +1,12 @@
+description = "Limpia archivos .vtt usando script de Python (sin LLM). Mueve archivos a vtt-originales y vtt-limpios."
 prompt = """
-Recibe el directorio objetivo (opcional, por defecto usa `.TmpFiles\FE` si no se especifica, pero el script actualmente tiene harcodeado el path, así que este comando solo ejecuta el script).
+Recibe el directorio objetivo (requerido).
 
 Pasos:
-1. Ejecuta el script de Python: `python PythonScripts/clean_vtt.py`
-2. El script procesará los archivos en la carpeta configurada y generará los `_limpio.txt`.
-"""description = "Limpia archivos .vtt usando script de Python (sin LLM). Más rápido y económico."
+1. Ejecuta el script de Python: `python PythonScripts/clean_vtt.py {{args}}`
+2. El script procesará los archivos .vtt en el directorio indicado.
+3. El script automáticamente:
+    - Creará las carpetas `vtt-originales` y `vtt-limpios`.
+    - Guardará la versión limpia en `vtt-limpios`.
+    - Moverá el original a `vtt-originales`.
+"""
