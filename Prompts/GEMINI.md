@@ -10,6 +10,7 @@ Este directorio alberga los prompts maestros que guían a los LLMs en cada etapa
 ## Variantes y Utilidades
 - **`Prompt-01-Consciente.md`**: Versión avanzada de síntesis con contexto histórico.
 - **`Prompt-04-GeneracionBacklogSpliteado.md`**: Generación separada de historias funcionales vs refinamiento.
+- **`Prompt-Alcance-Funcional.md`**: Generador de documentos de alcance funcional desde transcripciones.
 - **`Prompt-ADR-Generator.md`**: Generador de registros de decisiones de arquitectura.
 - **`Prompt-Limpieza-VTT.md`**: Utilidad para limpiar transcripciones.
 - **`Prompt-Resumen-Transcripcion.md`**: Generador de resúmenes de reuniones.
@@ -34,5 +35,6 @@ A continuación se listan los comandos personalizados existentes y su prompt aso
 | `/Prompt/backlog` | `Prompt-03-GeneracionBacklog.md` | Genera un backlog completo (funcional y refinamiento) desde la síntesis final. |
 | `/Prompt/backlog-spliteado` | `Prompt-04-GeneracionBacklogSpliteado.md` | Genera backlogs específicos (solo funcionales o solo refinamiento). |
 | `/Prompt/adr` | `Prompt-ADR-Generator.md` | Genera registros de decisiones de arquitectura (ADR) desde transcripciones. |
+| `/Prompt/alcance` | `Prompt-Alcance-Funcional.md` | Genera Documentos de Alcance Funcional desde transcripciones. |
 | `/Prompt/limpiar-vtt` | `Prompt-Limpieza-VTT.md` | Limpia metadatos técnicos de archivos de transcripción .vtt. |
 | `/Prompt/resumir` | `Prompt-Resumen-Transcripcion.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |

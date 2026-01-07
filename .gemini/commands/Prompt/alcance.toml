@@ -1,0 +1,9 @@
+description = "Genera un Documento de Alcance Funcional (Markdown) a partir de transcripciones."
+prompt = """
+Recibe la ruta de insumos: {{args}}
+
+1. Lista y lee recursivamente todos los archivos relevantes (txt, md, vtt limpios) en la ruta proporcionada.
+2. Aplica el prompt: @Prompts/Prompt-Alcance-Funcional.md
+3. Genera el nombre del archivo de salida siguiendo la convención: `YYYYMMDD.TópicoPrincipal.Alcance.md`.
+4. Guarda el resultado en el mismo directorio de insumos.
+"""
