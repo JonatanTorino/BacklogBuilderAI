@@ -54,7 +54,13 @@ $logFilePath = Join-Path $logDir $logFileName
 
 # MEJORA: Start-Transcript para capturar toda la salida de la consola en tiempo real.
 # Esto soluciona el problema de la pérdida de logs en caso de un fallo abrupto.
-Start-Transcript -Path $logFilePath
+$transcriptStarted = $false
+try {
+    Start-Transcript -Path $logFilePath -ErrorAction Stop
+    $transcriptStarted = $true
+} catch {
+    Write-Warning "Could not start transcript. Continuing without logging to file. Error: $($_.Exception.Message)"
+}
 
 try {
     Write-Host "`n=== Azure DevOps Backlog Creation Orchestrator ===" -ForegroundColor Cyan
@@ -138,6 +144,8 @@ catch {
 }
 finally {
     # MEJORA: Detener el transcript al final, tanto si hay éxito como si hay error.
-    Write-Host "`nFull log saved at: $logFilePath" -ForegroundColor Cyan
-    Stop-Transcript
+    if ($transcriptStarted) {
+        Write-Host "`nFull log saved at: $logFilePath" -ForegroundColor Cyan
+        Stop-Transcript
+    }
 }

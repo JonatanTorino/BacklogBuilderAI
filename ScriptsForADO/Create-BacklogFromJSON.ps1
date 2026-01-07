@@ -73,14 +73,14 @@ function New-WorkItem {
     )
 
     # Añade la descripción si se proporcionó y establece su formato a Markdown
-    if (-not [string]::IsNullOrEmpty($Description)) {
+    if (-not [string]::IsNullOrWhiteSpace($Description)) {
         $body += (@{ op = 'add'; path = '/fields/System.Description'; value = $Description })
         # Establece el formato a Markdown para el campo Descripción
         $body += (@{ op = 'add'; path = '/multilineFieldsFormat/System.Description'; value = 'Markdown' })
     }
 
     # Añade los criterios de aceptación si se proporcionaron y establece su formato a Markdown
-    if (-not [string]::IsNullOrEmpty($AcceptanceCriteria)) {
+    if (-not [string]::IsNullOrWhiteSpace($AcceptanceCriteria)) {
         $body += (@{ op = 'add'; path = '/fields/Microsoft.VSTS.Common.AcceptanceCriteria'; value = $AcceptanceCriteria })
         # Establece el formato a Markdown para el campo Criterios de Aceptación
         $body += (@{ op = 'add'; path = '/multilineFieldsFormat/Microsoft.VSTS.Common.AcceptanceCriteria'; value = 'Markdown' })
@@ -98,7 +98,13 @@ function New-WorkItem {
     }
 
     $uri = "$BaseUrl/_apis/wit/workitems/`$$Type`?api-version=7.1"
-    $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $Headers -Body ($body | ConvertTo-Json -Depth 10)
+    $jsonBody = $body | ConvertTo-Json -Depth 10
+    Write-Verbose "API Request URL: $uri"
+    Write-Verbose "API Request Body: $jsonBody"
+    
+    # MEJORA: Forzar codificación UTF8 al enviar el body
+    $bodyBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBody)
+    $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $Headers -Body $bodyBytes -ContentType 'application/json-patch+json'
     return $response.id
 }
 
