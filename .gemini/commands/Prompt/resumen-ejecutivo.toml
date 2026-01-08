@@ -1,4 +1,4 @@
-description = "Genera resúmenes de transcripciones. Si es un archivo, crea un resumen individual. Si es un directorio, procesa todas las transcripciones y genera un consolidado de temas pendientes."
+description = "Genera resúmenes ejecutivos de transcripciones. Si es un archivo, crea un resumen individual. Si es un directorio, procesa todas las transcripciones y genera un consolidado de temas pendientes."
 
 prompt = """
 Recibe la ruta: {{args}}
@@ -8,7 +8,7 @@ Primero, determina si la ruta es un archivo o directorio usando herramientas dis
 Si es un archivo:
 - Lee el contenido del archivo.
 - Aplica el siguiente prompt para generar el resumen:
-@Prompts/Prompt-Resumen-Transcripcion.md
+@Prompts/Prompt-Resumen-Ejecutivo.md
 - Guarda el resumen en un archivo Markdown con el mismo nombre base pero extensión .md (ej: archivo.vtt -> archivo.md).
 
 Si es un directorio:

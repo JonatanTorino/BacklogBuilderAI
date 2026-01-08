@@ -37,4 +37,5 @@ A continuación se listan los comandos personalizados existentes y su prompt aso
 | `/Prompt/adr` | `Prompt-ADR-Generator.md` | Genera registros de decisiones de arquitectura (ADR) desde transcripciones. |
 | `/Prompt/alcance` | `Prompt-Alcance-Funcional.md` | Genera Documentos de Alcance Funcional desde transcripciones. |
 | `/Prompt/limpiar-vtt` | `Prompt-Limpieza-VTT.md` | Limpia metadatos técnicos de archivos de transcripción .vtt. |
-| `/Prompt/resumir` | `Prompt-Resumen-Transcripcion.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |
+| `/Prompt/resumen-ejecutivo` | `Prompt-Resumen-Ejecutivo.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |
+| `/Prompt/resumen-conciso` | `Prompt-Resumen-Conciso.md` | Genera resúmenes ultra-concisos (Objetivo, Accionables, Pendientes). |

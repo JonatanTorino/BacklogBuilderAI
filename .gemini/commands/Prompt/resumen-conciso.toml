@@ -1,0 +1,17 @@
+description = "Genera un resumen ultra-conciso (Objetivo, Accionables, Pendientes) de una transcripción."
+content = "Prompts/Prompt-Resumen-Conciso.md"
+model = "gemini-1.5-pro"
+temperature = 0.2
+
+[parameters]
+input_files = { type = "STRING", description = "Ruta al archivo de transcripción (.vtt o .txt) o carpeta de transcripciones." }
+
+[execution]
+type = "llm"
+input_mode = "file_list" 
+file_pattern = ["**/*.vtt", "**/*.txt"]
+
+[output]
+type = "file"
+naming_convention = "YYYYMMDD.ResumenConciso.[NombreOriginal].md"
+extension = "md"
