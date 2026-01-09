@@ -1,17 +1,24 @@
 description = "Genera un resumen ultra-conciso (Objetivo, Accionables, Pendientes) de una transcripción."
-content = "Prompts/Prompt-Resumen-Conciso.md"
-model = "gemini-1.5-pro"
-temperature = 0.2
 
-[parameters]
-input_files = { type = "STRING", description = "Ruta al archivo de transcripción (.vtt o .txt) o carpeta de transcripciones." }
+prompt = """
+Recibe la ruta de entrada: {{args}}
 
-[execution]
-type = "llm"
-input_mode = "file_list" 
-file_pattern = ["**/*.vtt", "**/*.txt"]
+Tu objetivo es generar resúmenes concisos siguiendo estas instrucciones:
 
-[output]
-type = "file"
-naming_convention = "YYYYMMDD.ResumenConciso.[NombreOriginal].md"
-extension = "md"
+1. **Analizar la entrada**: Determina si la ruta proporcionada es un archivo o un directorio.
+
+2. **Procesamiento**:
+   - **Si es un archivo**:
+     - Verifica que sea una transcripción (.vtt o .txt).
+     - Lee su contenido.
+     - Aplica el prompt de resumen conciso: @Prompts/Prompt-Resumen-Conciso.md
+     - Genera el nombre del archivo de salida siguiendo el formato: `YYYYMMDD.ResumenConciso.[NombreOriginal].md` (donde YYYYMMDD es la fecha de hoy y NombreOriginal es el nombre del archivo sin extensión).
+     - Guarda el resultado en la misma carpeta que el archivo original.
+
+   - **Si es un directorio**:
+     - Lista los archivos del directorio.
+     - Identifica todos los archivos .vtt o .txt.
+     - Para cada uno, repite el proceso de "Si es un archivo" descrito arriba.
+
+Usa las herramientas necesarias (`read_file`, `write_file`, `list_directory`, `run_shell_command` para la fecha) para completar la tarea.
+"""
