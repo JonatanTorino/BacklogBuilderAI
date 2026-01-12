@@ -144,7 +144,7 @@ $skippedCount = 0
 $errorCount = 0
 
 # Collect IDs of created User Stories so we can list them in the summary
-$createdStoryIds = @()
+$createdStoryIds = [System.Collections.Generic.List[int]]::new()
 
 try {
     Write-Information "STAGE: Processing User Stories..."

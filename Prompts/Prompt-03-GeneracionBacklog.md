@@ -40,6 +40,7 @@ ROL: Actúa como un Product Owner experto y un Tech Lead con experiencia en Agil
 
 - El backlog final debe incluir **ambos tipos de historias**: Funcionales (de `keyFeatures`) y de Refinamiento (de Gaps).
 - **Ordena la lista final de `userStories`** de manera que las historias que son dependencias de otras aparezcan primero en el array.
+- **Exclusión de Tareas Auxiliares**: Para las Historias de Usuario Funcionales, **NO** generes tareas de soporte como "Documentación", "Pruebas", "Revisión de código", etc. Limítate estrictamente a las tareas de **construcción** del software.
 - El tono debe ser **técnico, directo, breve**.
 - **Asegura la inclusión** de todas las tareas obligatorias para las historias de tipo **Refinamiento**.
 - Los criterios de aceptación deben ser verificables.

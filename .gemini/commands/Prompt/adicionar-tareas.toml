@@ -1,0 +1,9 @@
+description = "Enriquece un backlog JSON existente añadiendo tareas auxiliares de QA y documentación."
+prompt = """
+Recibe el archivo de backlog JSON: {{args}}
+
+1. Lee el contenido del archivo JSON proporcionado.
+2. Crea un backup del archivo (ej: nombre.json.bak).
+3. Aplica el prompt: @Prompts/Prompt-05-AdicionarTareasAuxiliares.md
+4. Sobrescribe el archivo original con el JSON resultante (asegurando formato válido).
+"""

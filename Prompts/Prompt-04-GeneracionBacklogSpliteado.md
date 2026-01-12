@@ -26,10 +26,6 @@ La respuesta del usuario (ej: "Funcionales" o "Refinamiento") determinará el ca
    - **Análisis Crítico**: Evalúa la complejidad del desarrollo.
      - **Agrupación por Dependencia (complejidad baja)**: Si no se justifica la separación en capas, agrupa las tareas que estén altamente relacionadas por dependencias técnicas comunes y que su realización representen un progreso delimitado para habilitar otras acciones de menor dependencias.
      - **Separación en Capas (complejidad alta)**: Si la complejidad lo requiere, separa las tareas en capas lógicas (ej: "Datos: [Acción]", "Clases: [Acción]", "UI: [Acción]").
-   - **Tareas Obligatorias (Soporte)**: Incluir siempre:
-     - "Ejecutar reglas de comprobación de código" (CAR/AppChecker).
-     - "Revisión de código"
-     - "Realizar la documentación técnica", en la descripción aclarar C4, DER, Flujo.
 4. **Definición de Terminado (Definition of Done - DoD)**:
    - Vincular explícitamente cada `definitionOfDone` con el `AC##` (o múltiples `AC##`). Un criterio puede cumplirse por una o varias tareas y una tarea puede cumplir uno o varios criterios.
 5. **Alcance Excluido (`outOfScope`)**: Usa la sección `constraintsAndExclusions` para poblar la lista `outOfScope`.

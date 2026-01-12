@@ -119,10 +119,8 @@ def main():
         return
 
     # Crear directorios de organización si no existen
-    if not os.path.exists(originals_dir):
-        os.makedirs(originals_dir)
-    if not os.path.exists(clean_dir):
-        os.makedirs(clean_dir)
+    os.makedirs(originals_dir, exist_ok=True)
+    os.makedirs(clean_dir, exist_ok=True)
 
     # Listar archivos en el directorio raíz (ignorando los subdirectorios recién creados)
     files = [f for f in os.listdir(target_dir) if f.endswith('.vtt') and os.path.isfile(os.path.join(target_dir, f))]

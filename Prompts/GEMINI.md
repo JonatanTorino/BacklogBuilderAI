@@ -34,6 +34,7 @@ A continuación se listan los comandos personalizados existentes y su prompt aso
 | `/Prompt/fusion` | `Prompt-02-FusionRespuestas.md` | Integra respuestas humanas a los gaps identificados en la síntesis. |
 | `/Prompt/backlog` | `Prompt-03-GeneracionBacklog.md` | Genera un backlog completo (funcional y refinamiento) desde la síntesis final. |
 | `/Prompt/backlog-spliteado` | `Prompt-04-GeneracionBacklogSpliteado.md` | Genera backlogs específicos (solo funcionales o solo refinamiento). |
+| `/Prompt/adicionar-tareas` | `Prompt-05-AdicionarTareasAuxiliares.md` | Adiciona tareas auxiliares (QA, Doc) a un backlog funcional existente. |
 | `/Prompt/adr` | `Prompt-ADR-Generator.md` | Genera registros de decisiones de arquitectura (ADR) desde transcripciones. |
 | `/Prompt/alcance` | `Prompt-Alcance-Funcional.md` | Genera Documentos de Alcance Funcional desde transcripciones. |
 | `/Prompt/limpiar-vtt` | `Prompt-Limpieza-VTT.md` | Limpia metadatos técnicos de archivos de transcripción .vtt. |
