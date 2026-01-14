@@ -30,9 +30,11 @@ b9e4d3c2-6a78-5f90-1234-de45fg678901/67-3
    - Timestamps (ej: `00:01:59.334 --> 00:02:03.122`)
    - Líneas vacías redundantes
 3. **Conserva únicamente las intervenciones** en formato `<v NombreOrador>texto</v>`.
-4. **Consolida intervenciones consecutivas** del mismo orador en un solo bloque si están separadas por menos de 5 segundos (inferible por la secuencia).
-5. **Preserva el orden cronológico** de las intervenciones.
-6. **Mantiene saltos de línea** dentro del texto de cada intervención.
+4. **Calcula la duración total** aproximada (Timestamp final - Timestamp inicial).
+5. **Identifica la lista de participantes** únicos.
+6. **Consolida intervenciones consecutivas** del mismo orador en un solo bloque si están separadas por menos de 5 segundos (inferible por la secuencia).
+7. **Preserva el orden cronológico** de las intervenciones.
+8. **Mantiene saltos de línea** dentro del texto de cada intervención.
 
 ## REGLAS
 
@@ -44,9 +46,14 @@ b9e4d3c2-6a78-5f90-1234-de45fg678901/67-3
 
 ## FORMATO DE SALIDA
 
-Genera un archivo de texto limpio con únicamente las intervenciones en este formato:
+Genera un archivo de texto limpio con un encabezado de metadatos seguido de las intervenciones:
 
 ```plaintext
+Duration: 00:45:30
+Participants: Marglorie Colina, Juan Pérez
+
+--------------------------------------------------
+
 <v Marglorie Colina>bueno, no,
 yo lo voy a usar porque no necesito</v>
 
@@ -95,6 +102,11 @@ y revisamos en la próxima reunión</v>
 ### Salida (`reunion_proyecto_limpio.txt`):
 
 ```plaintext
+Duration: 00:00:26
+Participants: Ana García, Juan Pérez, Marglorie Colina
+
+--------------------------------------------------
+
 <v Marglorie Colina>bueno, no,
 yo lo voy a usar porque no necesito</v>
 

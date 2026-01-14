@@ -21,6 +21,7 @@ def process_vtt_file(file_path):
     interventions = []
     current_speaker = None
     current_text = []
+    first_start_time = None
     last_end_time = None
     
     # Regex para capturar el bloque de tiempo y el orador/texto
@@ -39,6 +40,9 @@ def process_vtt_file(file_path):
             end_time_str = time_match.group(2)
             current_start_time = parse_time(start_time_str)
             current_end_time = parse_time(end_time_str)
+
+            if first_start_time is None:
+                first_start_time = current_start_time
             
             # Buscar la siguiente línea con contenido
             i += 1
@@ -90,7 +94,17 @@ def process_vtt_file(file_path):
     if current_speaker:
         interventions.append({'speaker': current_speaker, 'text': " ".join(current_text)})
 
-    return interventions
+    duration_str = "00:00:00"
+    if first_start_time and last_end_time:
+        duration = last_end_time - first_start_time
+        # Formatear duración eliminando microsegundos si se desea, o mantenerlos
+        total_seconds = int(duration.total_seconds())
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        seconds = total_seconds % 60
+        duration_str = f"{hours:02}:{minutes:02}:{seconds:02}"
+
+    return interventions, duration_str
 
 import shutil
 import argparse
@@ -150,7 +164,7 @@ def main():
                     output_report["summary"]["filesWithWarnings"] += 1
                     continue
 
-            interventions = process_vtt_file(file_path)
+            interventions, duration_str = process_vtt_file(file_path)
             
             # Lógica para recortar el nombre del archivo hasta el último guion
             base_name = os.path.splitext(filename)[0]
@@ -165,7 +179,15 @@ def main():
             output_path = os.path.join(clean_dir, output_filename)
             
             unique_speakers = set()
+            for intervention in interventions:
+                unique_speakers.add(intervention['speaker'])
+
             with open(output_path, 'w', encoding='utf-8') as f:
+                # Escribir encabezado
+                f.write(f"Duration: {duration_str}\n")
+                f.write(f"Participants: {', '.join(sorted(list(unique_speakers)))}\n\n")
+                f.write("-" * 50 + "\n\n")
+
                 for intervention in interventions:
                     # Reconstruir formato <v Speaker>text</v>
                     # Limpieza extra de saltos de línea y espacios dobles
@@ -173,7 +195,8 @@ def main():
                     clean_text = re.sub(r'\s+', ' ', clean_text)
                     
                     f.write(f"<v {intervention['speaker']}>{clean_text}</v>\n\n")
-                    unique_speakers.add(intervention['speaker'])
+
+
             
             # Mover archivo original a la carpeta de originales
             original_dest_path = os.path.join(originals_dir, filename)
