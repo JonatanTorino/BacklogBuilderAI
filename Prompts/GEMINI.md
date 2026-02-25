@@ -13,7 +13,10 @@ Este directorio alberga los prompts maestros que guían a los LLMs en cada etapa
 - **`Prompt-Alcance-Funcional.md`**: Generador de documentos de alcance funcional desde transcripciones.
 - **`Prompt-ADR-Generator.md`**: Generador de registros de decisiones de arquitectura.
 - **`Prompt-Limpieza-VTT.md`**: Utilidad para limpiar transcripciones.
-- **`Prompt-Resumen-Transcripcion.md`**: Generador de resúmenes de reuniones.
+- **`Prompt-Resumen-Reunion.md`**: Generador de resúmenes de reuniones.
+- **`Prompt-action-items.md`**: Generador de reportes de Action Items.
+- **`Prompt-manual-doc.md`**: Generador de Manuales de Usuario.
+- **`Prompt-scope-doc.md`**: Generador de Documentos de Alcance.
 
 ## Protocolo de Gestión de Prompts
 
@@ -38,5 +41,8 @@ A continuación se listan los comandos personalizados existentes y su prompt aso
 | `/Prompt/adr` | `Prompt-ADR-Generator.md` | Genera registros de decisiones de arquitectura (ADR) desde transcripciones. |
 | `/Prompt/alcance` | `Prompt-Alcance-Funcional.md` | Genera Documentos de Alcance Funcional desde transcripciones. |
 | `/Prompt/limpiar-vtt` | `Prompt-Limpieza-VTT.md` | Limpia metadatos técnicos de archivos de transcripción .vtt. |
-| `/Prompt/resumen-ejecutivo` | `Prompt-Resumen-Ejecutivo.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |
+| `/Prompt/resumen-reunion` | `Prompt-Resumen-Reunion.md` | Genera resúmenes ejecutivos de reuniones desde transcripciones. |
 | `/Prompt/resumen-conciso` | `Prompt-Resumen-Conciso.md` | Genera resúmenes ultra-concisos (Objetivo, Accionables, Pendientes). |
+| `/Prompt/action-items` | `Prompt-action-items.md` | Genera un reporte de elementos de acción (Action Items) desde transcripciones. |
+| `/Prompt/manual-doc` | `Prompt-manual-doc.md` | Genera un Manual de Usuario desde transcripciones. |
+| `/Prompt/scope-doc` | `Prompt-scope-doc.md` | Genera un Documento de Alcance desde transcripciones. |

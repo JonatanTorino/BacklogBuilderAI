@@ -14,6 +14,7 @@ yo lo voy a usar porque no necesito</v>
 ```
 
 **Instrucciones de Procesamiento**:
+
 - **Ignora los timestamps** (ej: `00:01:59.334 --> 00:02:03.122`)
 - **Ignora los identificadores** previos al timestamp (ej: `147e2139-9e24-4550-a720-be03c425ba2a/33-1`)
 - **Extrae el nombre del orador** de las etiquetas `<v NombreOrador>texto</v>`
@@ -36,12 +37,12 @@ yo lo voy a usar porque no necesito</v>
 
 ## REGLAS
 
-* No inventes información que no esté en la transcripción.
-* Si un accionable no tiene un responsable explícito, déjalo como `TBD` (To Be Determined).
-* Si no se tomaron decisiones claras, indica `No se registraron decisiones explícitas`.
-* Sé conciso pero completo. Captura la esencia sin perder detalles importantes.
-* Si hay contradicciones o cambios de opinión durante la reunión, refléjalos en el contexto o decisiones.
-* Si no hay consideraciones extras de algún tipo específico (bloqueantes, dependencias, etc.), simplemente omite esa subsección.
+- No inventes información que no esté en la transcripción.
+- Si un accionable no tiene un responsable explícito, déjalo como `TBD` (To Be Determined).
+- Si no se tomaron decisiones claras, indica `No se registraron decisiones explícitas`.
+- Sé conciso pero completo. Captura la esencia sin perder detalles importantes.
+- Si hay contradicciones o cambios de opinión durante la reunión, refléjalos en el contexto o decisiones.
+- Si no hay consideraciones extras de algún tipo específico (bloqueantes, dependencias, etc.), simplemente omite esa subsección.
 
 ## FORMATO DE SALIDA
 
@@ -73,10 +74,12 @@ Genera un documento en formato **Markdown** estructurado y fácil de leer, sigui
 ## ✅ Decisiones
 
 ### [Título de la Decisión 1]
+
 - **Propuesta por**: [Nombre o "No especificado"]
 - **Justificación**: [Razón o contexto de la decisión]
 
 ### [Título de la Decisión 2]
+
 - **Propuesta por**: [Nombre o "No especificado"]
 - **Justificación**: [Razón o contexto de la decisión]
 
@@ -86,36 +89,42 @@ Genera un documento en formato **Markdown** estructurado y fácil de leer, sigui
 
 ## 📌 Accionables
 
-| # | Acción | Responsable | Fecha Límite | Contexto |
-|---|--------|-------------|--------------|----------|
-| 1 | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
-| 2 | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
+| #   | Acción                       | Responsable    | Fecha Límite  | Contexto             |
+| --- | ---------------------------- | -------------- | ------------- | -------------------- |
+| 1   | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
+| 2   | [Descripción del accionable] | [Nombre o TBD] | [Fecha o N/A] | [Contexto adicional] |
 
 ---
 
 ## 🔍 Consideraciones Extras
 
 ### 🚧 Bloqueantes
+
 - [Descripción del bloqueante 1]
 - [Descripción del bloqueante 2]
 
 ### 🔗 Dependencias
+
 - [Descripción de la dependencia 1]
 - [Descripción de la dependencia 2]
 
 ### ⚠️ Riesgos
+
 - [Descripción del riesgo 1]
 - [Descripción del riesgo 2]
 
 ### 💡 Supuestos
+
 - [Descripción del supuesto 1]
 - [Descripción del supuesto 2]
 
 ### 🔒 Restricciones
+
 - [Descripción de la restricción 1]
 - [Descripción de la restricción 2]
 
 ### 📝 Otras Consideraciones
+
 - [Cualquier otra consideración relevante]
 
 > **Nota**: Solo incluir las subsecciones que apliquen. Si no hay bloqueantes, dependencias, riesgos, etc., omitir esa subsección.
@@ -159,10 +168,12 @@ Reunión de planificación del sprint 23. Se discutió el alcance de las nuevas 
 ## ✅ Decisiones
 
 ### Implementación del Reporte de Ventas Mensuales
+
 - **Propuesta por**: Juan Pérez
 - **Justificación**: Es la funcionalidad más solicitada por los clientes y tiene el mayor impacto en el negocio.
 
 ### Postergación de la Integración con CRM
+
 - **Propuesta por**: Ana García
 - **Justificación**: Dependencia externa no resuelta con el equipo de infraestructura. Se requiere coordinación adicional antes de proceder.
 
@@ -170,25 +181,28 @@ Reunión de planificación del sprint 23. Se discutió el alcance de las nuevas 
 
 ## 📌 Accionables
 
-| # | Acción | Responsable | Fecha Límite | Contexto |
-|---|--------|-------------|--------------|----------|
-| 1 | Crear las historias de usuario para el reporte de ventas | Marglorie Colina | 12/12/2025 | Incluir criterios de aceptación y mockups |
-| 2 | Coordinar reunión con equipo de infraestructura | Ana García | 15/12/2025 | Para resolver dependencias de la integración con CRM |
-| 3 | Validar requisitos de performance con QA | TBD | N/A | Definir umbrales aceptables de tiempo de respuesta |
+| #   | Acción                                                   | Responsable      | Fecha Límite | Contexto                                             |
+| --- | -------------------------------------------------------- | ---------------- | ------------ | ---------------------------------------------------- |
+| 1   | Crear las historias de usuario para el reporte de ventas | Marglorie Colina | 12/12/2025   | Incluir criterios de aceptación y mockups            |
+| 2   | Coordinar reunión con equipo de infraestructura          | Ana García       | 15/12/2025   | Para resolver dependencias de la integración con CRM |
+| 3   | Validar requisitos de performance con QA                 | TBD              | N/A          | Definir umbrales aceptables de tiempo de respuesta   |
 
 ---
 
 ## 🔍 Consideraciones Extras
 
 ### 🔗 Dependencias
+
 - **Equipo de Infraestructura**: Se requiere coordinación para resolver la integración con el sistema de CRM antes del próximo sprint.
 - **Equipo de QA**: Necesitamos validación de requisitos de performance antes de comenzar el desarrollo.
 
 ### ⚠️ Riesgos
+
 - **Migración de datos históricos**: No se ha definido una estrategia clara, lo que podría impactar el cronograma si no se resuelve pronto.
 - **Capacidad del equipo**: Con las vacaciones de fin de año, podríamos tener menos recursos disponibles de lo esperado.
 
 ### 💡 Supuestos
+
 - Se asume que el equipo de infraestructura podrá resolver las dependencias en un plazo de 2 semanas.
 - Se asume que los mockups del reporte de ventas serán aprobados por el cliente sin cambios mayores.
 

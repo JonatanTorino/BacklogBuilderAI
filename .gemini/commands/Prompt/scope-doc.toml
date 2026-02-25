@@ -1,0 +1,12 @@
+description = "Genera un Documento de Alcance en Markdown a partir de transcripciones."
+prompt = """
+Recibe la ruta de entrada: {{args}}
+
+1. **Analizar la entrada**: Determina si es un archivo o un directorio.
+2. **Procesamiento**:
+   - Lee el contenido de la transcripción.
+   - Aplica el prompt: @Prompts/Prompt-scope-doc.md
+   - Genera el nombre de salida: `YYYYMMDD.ScopeDoc.[NombreOriginal].md` (donde YYYYMMDD es la fecha de hoy).
+   - Guarda el resultado en la misma carpeta que el archivo original.
+Usa las herramientas necesarias.
+"""
