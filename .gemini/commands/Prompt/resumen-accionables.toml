@@ -1,0 +1,17 @@
+description = "Orquestador: Genera resumen completo y accionables técnicos en un solo paso desde un transcript."
+prompt = """
+Recibe la ruta de la transcripción (.txt o .vtt): {{args}}
+
+1. **Preparación**: Lee el contenido de la transcripción proporcionada.
+2. **Paso 1 - Resumen Base**: 
+   - Ejecuta el prompt @Prompts/Prompt-Resumen-Reunion.md para generar la estructura inicial (Participantes, Contexto, Decisiones).
+3. **Paso 2 - Accionables Técnicos**: 
+   - Ejecuta el prompt @Prompts/Prompt-action-items.md sobre el mismo transcript para generar el reporte detallado de tareas.
+4. **Fusión**: 
+   - Integra el reporte de accionables dentro del resumen base, sustituyendo la sección de accionables genérica por la versión técnica.
+5. **Salida**: 
+   - Genera el nombre siguiendo la convención: `YYYYMMDD.ReunionConAccionables.[NombreOriginal].md`.
+   - Guarda el archivo final en el mismo directorio.
+
+Usa `read_file` y `write_file` para completar el proceso en una única ejecución.
+"""
