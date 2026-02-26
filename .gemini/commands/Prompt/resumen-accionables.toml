@@ -1,17 +1,28 @@
-description = "Orquestador: Genera resumen completo y accionables técnicos en un solo paso desde un transcript."
+description = "Orquestador Pro: Limpia, Resume (comando), genera Action Items (comando) y fusiona en un solo reporte."
 prompt = """
-Recibe la ruta de la transcripción (.txt o .vtt): {{args}}
+Recibe la ruta de entrada (archivo o carpeta): {{args}}
 
-1. **Preparación**: Lee el contenido de la transcripción proporcionada.
-2. **Paso 1 - Resumen Base**: 
-   - Ejecuta el prompt @Prompts/Prompt-Resumen-Reunion.md para generar la estructura inicial (Participantes, Contexto, Decisiones).
-3. **Paso 2 - Accionables Técnicos**: 
-   - Ejecuta el prompt @Prompts/Prompt-action-items.md sobre el mismo transcript para generar el reporte detallado de tareas.
-4. **Fusión**: 
-   - Integra el reporte de accionables dentro del resumen base, sustituyendo la sección de accionables genérica por la versión técnica.
-5. **Salida**: 
-   - Genera el nombre siguiendo la convención: `YYYYMMDD.ReunionConAccionables.[NombreOriginal].md`.
-   - Guarda el archivo final en el mismo directorio.
+1. **Paso 1 - Limpieza (Solo .vtt)**: 
+   - Si la entrada contiene archivos `.vtt`, ejecuta el script de utilidad: `python PythonScripts/clean_vtt.py "{{args}}"`.
+   - El script moverá los originales a `vtt-originales/` y creará los limpios en `vtt-limpios/`.
 
-Usa `read_file` y `write_file` para completar el proceso en una única ejecución.
+2. **Paso 2 - Preparación**: 
+   - Localiza la transcripción a procesar (en `vtt-limpios/` si fue procesada, o la original si era `.txt`).
+   - Lee el contenido para los siguientes pasos.
+
+3. **Paso 3 - Resumen Base (Invocación)**: 
+   - Ejecuta la lógica del comando `/Prompt/resumen-reunion` (usando @Prompts/Prompt-Resumen-Reunion.md).
+   - Genera y guarda el archivo: `YYYYMMDD.ResumenReunion.[NombreOriginal].md`.
+
+4. **Paso 4 - Accionables Técnicos (Invocación)**: 
+   - Ejecuta la lógica del comando `/Prompt/action-items` (usando @Prompts/Prompt-action-items.md).
+   - Genera y guarda el archivo: `YYYYMMDD.ActionItems.[NombreOriginal].md`.
+
+5. **Paso 5 - Fusión y Salida Final**: 
+   - Toma el contenido de los archivos generados en el Paso 3 y Paso 4.
+   - Duplicar el archivo de resumen base con nombre `YYYYMMDD.ResumenReunion.[NombreOriginal].md` en un nuevo archivo llamado: `YYYYMMDD.ResumenConAccionables.[NombreOriginal].md` para fusionar el resumen base con los accionables.
+   - Integra todas las secciones de nivel H2 desde el archivo `YYYYMMDD.ActionItems.[NombreOriginal].md` en el archivo de fusión.
+   - Mantén todos los archivos generados en el directorio de insumos como evidencia de la evaluación.
+
+Usa `run_shell_command` para el script de Python y `read_file`/`write_file` para el resto.
 """
