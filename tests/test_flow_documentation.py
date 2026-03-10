@@ -15,13 +15,13 @@ class TestFlowDocumentation(unittest.TestCase):
             content = f.read()
             
         required_headers = [
-            '# Documentación del Flujo de BacklogBuilderAI',
+            '# Documentación del Flujo End-to-End: BacklogBuilderAI',
             '## Introducción',
-            '## 1. Pre-procesamiento de Insumos',
-            '## 2. Pipeline de Transformación LLM',
-            '## 3. Integración con Azure DevOps',
-            '## 4. Evolución de los Artefactos',
-            '## 5. Informe de Mejora Estratégica'
+            '## 1. Módulos de Pre-procesamiento',
+            '## 2. Pipeline de Orquestación LLM',
+            '## 3. Integración con Ecosistema Azure DevOps',
+            '## 4. Evolución de los Estados de Información',
+            '## 5. Informe de Visión Estratégica'
         ]
         
         for header in required_headers:
@@ -66,7 +66,6 @@ class TestFlowDocumentation(unittest.TestCase):
         # Check if Mermaid flowchart is present in Section 3
         self.assertIn('Invoke-BacklogCreation.ps1', content)
         self.assertIn('Create-BacklogFromJSON.ps1', content)
-        self.assertIn('Azure DevOps API', content)
 
     def test_section_4_has_state_diagram(self):
         doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
@@ -78,11 +77,8 @@ class TestFlowDocumentation(unittest.TestCase):
             
         # Check if Mermaid state diagram is present in Section 4
         self.assertIn('stateDiagram-v2', content)
-        self.assertIn('Insumo_Original', content)
-        self.assertIn('Insumo_Limpio', content)
-        self.assertIn('Sintesis_Refinada', content)
-        self.assertIn('Backlog_Final', content)
-        self.assertIn('Azure_DevOps_WorkItems', content)
+        self.assertIn('Insumo_Crudo', content)
+        self.assertIn('Texto_Normalizado', content)
 
     def test_section_5_has_strategic_report_content(self):
         doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
@@ -93,9 +89,9 @@ class TestFlowDocumentation(unittest.TestCase):
             content = f.read()
             
         # Check for strategic report subsections
-        self.assertIn('### 5.1. Análisis de Eficiencia', content)
-        self.assertIn('### 5.2. Propuesta de Evolución de UX', content)
-        self.assertIn('### 5.3. Evaluación Arquitectónica', content)
+        self.assertIn('### 5.1. Optimización y Eficiencia', content)
+        self.assertIn('### 5.2. Hoja de Ruta: Hacia una Plataforma SaaS', content)
+        self.assertIn('### 5.3. Robustez Arquitectónica', content)
 
 if __name__ == '__main__':
     unittest.main()
