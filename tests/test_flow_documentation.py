@@ -68,5 +68,21 @@ class TestFlowDocumentation(unittest.TestCase):
         self.assertIn('Create-BacklogFromJSON.ps1', content)
         self.assertIn('Azure DevOps API', content)
 
+    def test_section_4_has_state_diagram(self):
+        doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
+        if not os.path.exists(doc_path):
+            self.skipTest("File does not exist")
+        
+        with open(doc_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Check if Mermaid state diagram is present in Section 4
+        self.assertIn('stateDiagram-v2', content)
+        self.assertIn('Insumo_Original', content)
+        self.assertIn('Insumo_Limpio', content)
+        self.assertIn('Sintesis_Refinada', content)
+        self.assertIn('Backlog_Final', content)
+        self.assertIn('Azure_DevOps_WorkItems', content)
+
 if __name__ == '__main__':
     unittest.main()
