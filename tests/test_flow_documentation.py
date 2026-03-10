@@ -41,5 +41,19 @@ class TestFlowDocumentation(unittest.TestCase):
         self.assertIn('clean_vtt.py', content)
         self.assertIn('convert_docx_to_text.py', content)
 
+    def test_section_2_has_sequence_diagram(self):
+        doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
+        if not os.path.exists(doc_path):
+            self.skipTest("File does not exist")
+        
+        with open(doc_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Check if Mermaid sequence diagram is present in Section 2
+        self.assertIn('sequenceDiagram', content)
+        self.assertIn('Prompt-01', content)
+        self.assertIn('Prompt-02', content)
+        self.assertIn('Prompt-03', content)
+
 if __name__ == '__main__':
     unittest.main()
