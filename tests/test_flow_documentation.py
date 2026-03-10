@@ -55,5 +55,18 @@ class TestFlowDocumentation(unittest.TestCase):
         self.assertIn('Prompt-02', content)
         self.assertIn('Prompt-03', content)
 
+    def test_section_3_has_mermaid_diagram(self):
+        doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
+        if not os.path.exists(doc_path):
+            self.skipTest("File does not exist")
+        
+        with open(doc_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Check if Mermaid flowchart is present in Section 3
+        self.assertIn('Invoke-BacklogCreation.ps1', content)
+        self.assertIn('Create-BacklogFromJSON.ps1', content)
+        self.assertIn('Azure DevOps API', content)
+
 if __name__ == '__main__':
     unittest.main()
