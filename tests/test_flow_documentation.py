@@ -90,7 +90,7 @@ class TestFlowDocumentation(unittest.TestCase):
             
         # Check for strategic report subsections
         self.assertIn('### 5.1. Optimización y Eficiencia', content)
-        self.assertIn('### 5.2. Hoja de Ruta: Hacia una Plataforma SaaS', content)
+        self.assertIn('### 5.2. Hoja de Ruta: Hacia una Plataforma SaaS Colaborativa', content)
         self.assertIn('### 5.3. Robustez Arquitectónica', content)
 
 if __name__ == '__main__':
