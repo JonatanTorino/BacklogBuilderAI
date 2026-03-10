@@ -1,9 +1,9 @@
 # Plan: Documentación del Flujo de BacklogBuilderAI
 
-## Phase 1: Research & Structural Mapping
+## Phase 1: Research & Structural Mapping [checkpoint: ba63779]
 - [x] Task: Analizar las estructuras de archivos actuales (vtt-limpios, synthesis JSON, backlog JSON) para mapear las transformaciones de datos reales.
 - [x] Task: Crear la estructura base del archivo de documentación en `KnowledgeBase/BacklogBuilderAI/Documentation/Flow_E2E.md` ffa8948
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Research & Structural Mapping' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Research & Structural Mapping' (Protocol in workflow.md) ba63779
 
 ## Phase 2: Documentation Implementation - Core Process
 - [ ] Task: Documentar la etapa de **Pre-procesamiento** (scripts de Python) con un diagrama de flujo Mermaid (LR).
