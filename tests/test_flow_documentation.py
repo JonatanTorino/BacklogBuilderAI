@@ -84,5 +84,18 @@ class TestFlowDocumentation(unittest.TestCase):
         self.assertIn('Backlog_Final', content)
         self.assertIn('Azure_DevOps_WorkItems', content)
 
+    def test_section_5_has_strategic_report_content(self):
+        doc_path = os.path.join('KnowledgeBase', 'BacklogBuilderAI', 'Documentation', 'Flow_E2E.md')
+        if not os.path.exists(doc_path):
+            self.skipTest("File does not exist")
+        
+        with open(doc_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Check for strategic report subsections
+        self.assertIn('### 5.1. Análisis de Eficiencia', content)
+        self.assertIn('### 5.2. Propuesta de Evolución de UX', content)
+        self.assertIn('### 5.3. Evaluación Arquitectónica', content)
+
 if __name__ == '__main__':
     unittest.main()
