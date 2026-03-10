@@ -6,8 +6,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Research & Structural Mapping' (Protocol in workflow.md) ba63779
 
 ## Phase 2: Documentation Implementation - Core Process
-- [ ] Task: Documentar la etapa de **Pre-procesamiento** (scripts de Python) con un diagrama de flujo Mermaid (LR).
-- [ ] Task: Documentar el **Flujo de Transformación LLM** (Síntesis, Fusión, Backlog) con un diagrama de secuencia Mermaid.
+- [x] Task: Documentar la etapa de **Pre-procesamiento** (scripts de Python) con un diagrama de flujo Mermaid (LR) 97ba8c6
+- [~] Task: Documentar el **Flujo de Transformación LLM** (Síntesis, Fusión, Backlog) con un diagrama de secuencia Mermaid.
 - [ ] Task: Documentar la **Integración con Azure DevOps** (scripts de PowerShell) con un diagrama de flujo Mermaid (LR).
 - [ ] Task: Documentar la **Evolución de los Artefactos** (desde transcript hasta Work Items en ADO) con un diagrama de estado Mermaid.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Documentation Implementation - Core Process' (Protocol in workflow.md)
