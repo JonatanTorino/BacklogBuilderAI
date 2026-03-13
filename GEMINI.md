@@ -33,6 +33,7 @@ Al ejecutar un prompt de la carpeta `./Prompts/` que genere un archivo JSON como
         - `01.SintesisConsciente`: Para la salida de `Prompt-01-Consciente.md`.
         - `02.Fusion`: Para la salida de `Prompt-02-FusionRespuestas.md`.
         - `03.Backlog`: Para la salida de `Prompt-03-GeneracionBacklog.md`.
+        - `US`: Para la tarjeta de propuesta de User Story generada por `Prompt-Propuesta-UserStory.md`.
     - `TópicoPrincipal`: Tres (3) palabras clave extraídas del tópico principal de la síntesis, unidas en formato `PascalCase` (sin espacios ni puntos).
 
     **Ejemplos:**

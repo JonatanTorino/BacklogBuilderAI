@@ -19,6 +19,7 @@ Este directorio alberga los prompts maestros que guían a los LLMs en cada etapa
 - **`Prompt-action-items.md`**: Generador de reportes de Action Items.
 - **`Prompt-manual-doc.md`**: Generador de Manuales de Usuario.
 - **`Prompt-scope-doc.md`**: Generador de Documentos de Alcance.
+- **`Prompt-Propuesta-UserStory.md`**: Generador de tarjetas de propuesta de User Story (Azure DevOps) desde múltiples insumos.
 
 ## Protocolo de Gestión de Prompts
 
@@ -49,3 +50,4 @@ A continuación se listan los comandos personalizados existentes y su prompt aso
 | `/Prompt/action-items`        | `Prompt-action-items.md`                  | Genera un reporte de elementos de acción (Action Items) desde transcripciones.      |
 | `/Prompt/manual-doc`          | `Prompt-manual-doc.md`                    | Genera un Manual de Usuario desde transcripciones.                                  |
 | `/Prompt/scope-doc`           | `Prompt-scope-doc.md`                     | Genera un Documento de Alcance desde transcripciones.                               |
+| `/Prompt/propuesta-us`        | `Prompt-Propuesta-UserStory.md`           | Genera una tarjeta de User Story final (Azure DevOps) desde múltiples archivos.     |
