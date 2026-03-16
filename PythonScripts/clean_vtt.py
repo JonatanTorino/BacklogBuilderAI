@@ -166,16 +166,9 @@ def main():
 
             interventions, duration_str = process_vtt_file(file_path)
             
-            # Lógica para recortar el nombre del archivo hasta el último guion
+            # Mantener el nombre original del archivo y añadir el sufijo _limpio.txt
             base_name = os.path.splitext(filename)[0]
-            last_dash_index = base_name.rfind('-')
-            
-            if last_dash_index != -1:
-                clean_name = base_name[:last_dash_index]
-            else:
-                clean_name = base_name
-                
-            output_filename = f"{clean_name}_limpio.txt"
+            output_filename = f"{base_name}_limpio.txt"
             output_path = os.path.join(clean_dir, output_filename)
             
             unique_speakers = set()
