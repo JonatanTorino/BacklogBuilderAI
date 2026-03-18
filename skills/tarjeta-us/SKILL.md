@@ -1,3 +1,15 @@
+---
+name: tarjeta-us
+description: >
+  Genera la tarjeta de User Story final en formato Markdown lista para Azure DevOps
+  (ADO), siguiendo los principios INVEST y BDD. Consolida todos los insumos del
+  pipeline (síntesis, fusión, scope doc) y produce título, descripción rol/necesidad/
+  valor, y criterios de aceptación en formato Given-When-Then (AC-01, AC-02...).
+  Usar este skill cuando el usuario mencione "propuesta de user story", "tarjeta ADO",
+  "user story card", "tarjeta US", "generar user story", "crear tarjeta" o
+  "aplicar Prompt-Propuesta-UserStory".
+---
+
 # Skill: tarjeta-us
 
 ## Descripción

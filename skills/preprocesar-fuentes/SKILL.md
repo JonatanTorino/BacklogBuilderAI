@@ -1,3 +1,15 @@
+---
+name: preprocesar-fuentes
+description: >
+  Convierte archivos de transcripción y documentos Word a texto plano (.txt) listo
+  para el pipeline de BacklogBuilderAI. Detecta automáticamente el tipo de archivo
+  y ejecuta el script correcto: archivos .vtt (transcripciones de Teams/Zoom) los
+  limpia con clean_vtt.py; archivos .docx los convierte con convert_docx_to_text.py.
+  Usar este skill siempre que el usuario mencione "preprocesar", "limpiar VTT",
+  "clean vtt", "convertir DOCX", "convertir Word", "docx a texto", "procesar archivos
+  fuente", o cuando haya archivos .vtt o .docx que preparar antes del análisis.
+---
+
 # Skill: preprocesar-fuentes
 
 ## Descripción

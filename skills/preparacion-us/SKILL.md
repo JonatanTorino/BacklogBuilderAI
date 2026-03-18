@@ -1,3 +1,15 @@
+---
+name: preparacion-us
+description: >
+  Skill maestro que orquesta el pipeline completo de BacklogBuilderAI: desde fuentes
+  brutas (.vtt, .docx, .txt) hasta la User Story final lista para Azure DevOps.
+  Delega en los sub-skills preprocesar-fuentes, resumen-accionables, sintesis, fusion,
+  scope-doc y tarjeta-us, con una pausa obligatoria de revisión humana entre la
+  síntesis y la fusión. Requiere que los demás skills estén instalados al mismo nivel.
+  Usar este skill cuando el usuario mencione "pipeline completo", "preparar user story",
+  "crear US desde transcripciones", "flujo completo" o "procesar todo desde las fuentes".
+---
+
 # Skill: preparacion-us (Skill Maestro)
 
 ## Descripción

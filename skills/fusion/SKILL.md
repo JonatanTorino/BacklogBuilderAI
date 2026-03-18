@@ -1,3 +1,15 @@
+---
+name: fusion
+description: >
+  Integra las respuestas del usuario/stakeholders a los gaps identificados en la
+  síntesis, produciendo un documento consolidado en Markdown listo para generar el
+  Documento de Alcance. Toma el archivo de síntesis anotado, resuelve ambigüedades
+  con el nuevo contexto, y cierra o preserva cada pregunta abierta según corresponda.
+  Usar este skill cuando el usuario mencione "fusionar", "integrar respuestas",
+  "fusion", "incorporar feedback a la síntesis", "continuar después de la síntesis"
+  o "aplicar Prompt-02".
+---
+
 # Skill: fusion
 
 ## Descripción

@@ -1,3 +1,14 @@
+---
+name: resumen-accionables
+description: >
+  Genera documentos de resumen a partir de transcripciones de reuniones procesadas.
+  Puede producir: un resumen ejecutivo de la reunión, una lista priorizada de action
+  items con responsables, o ambos fusionados en un único documento (modo por defecto).
+  Usar este skill cuando el usuario mencione "resumir reunión", "resumen ejecutivo",
+  "resumen de reunión", "action items", "accionables", "resumen con accionables",
+  "reunión con accionables" o "generar resumen", incluso si no especifica el formato exacto.
+---
+
 # Skill: resumen-accionables
 
 ## Descripción

@@ -1,3 +1,15 @@
+---
+name: sintesis
+description: >
+  Sintetiza múltiples insumos (transcripciones, documentos, resúmenes) asumiendo el
+  rol de Analista de Negocio senior: identifica requerimientos funcionales y no
+  funcionales, detecta gaps y ambigüedades, y formula preguntas concretas para cada
+  punto pendiente. El output es Markdown estructurado (no JSON), pensado para que el
+  usuario lo revise y anote respuestas antes de continuar al paso de fusión.
+  Usar este skill cuando el usuario mencione "sintetizar", "analizar insumos",
+  "detectar gaps", "síntesis de requerimientos", "hacer la síntesis" o "aplicar Prompt-01".
+---
+
 # Skill: sintesis
 
 ## Descripción

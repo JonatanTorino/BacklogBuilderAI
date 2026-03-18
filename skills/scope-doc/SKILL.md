@@ -1,3 +1,15 @@
+---
+name: scope-doc
+description: >
+  Genera el Documento de Alcance Funcional en Markdown a partir de los insumos
+  procesados del pipeline (síntesis, fusión y otros documentos de contexto).
+  Define objetivo, alcance, usuarios y roles, restricciones, dependencias y
+  criterios de aceptación de alto nivel. Es el paso previo a la generación
+  de la User Story. Usar este skill cuando el usuario mencione "scope document",
+  "documento de alcance", "alcance funcional", "generar scope doc" o
+  "aplicar Prompt-scope-doc".
+---
+
 # Skill: scope-doc
 
 ## Descripción
