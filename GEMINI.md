@@ -55,3 +55,51 @@ Si durante nuestras interacciones se genera una nueva idea, insight o propuesta 
 ### Protocolo de Configuración MCP (Model Context Protocol)
 
 El objetivo es usar la lista de MCPs que posee GEMINI. Por consiguiente, la consola de Gemini CLI debe ignorar cualquier configuración de MCP proveniente de archivos de configuración de agentes externos que no sean el propio GEMINI CLI, evitando conflictos y garantizando que solo se utilicen las herramientas designadas.
+
+---
+
+## Skills de Claude Code
+
+Los componentes clave del pipeline están empaquetados como **Claude Code Skills** en la carpeta `skills/`. Permiten que colaboradores invoquen cada etapa del flujo sin conocer los comandos subyacentes.
+
+### Skills disponibles
+
+| Skill | Directorio | Descripción |
+|-------|-----------|-------------|
+| `clean-vtt` | `skills/clean-vtt/` | Limpia archivos VTT (transcripciones) |
+| `convert-docx` | `skills/convert-docx/` | Convierte `.docx` a `.txt` |
+| `resumen-accionables` | `skills/resumen-accionables/` | Genera resumen ejecutivo + action items |
+| `sintesis` | `skills/sintesis/` | Sintetiza insumos y detecta gaps (Analista de Negocio) |
+| `fusion` | `skills/fusion/` | Integra respuestas humanas a los gaps |
+| `scope-doc` | `skills/scope-doc/` | Genera Documento de Alcance Funcional |
+| `tarjeta-us` | `skills/tarjeta-us/` | Genera tarjeta de User Story para Azure DevOps |
+| `preparacion-us` | `skills/preparacion-us/` | **Skill maestro**: orquesta el pipeline completo |
+
+### Instalación global
+
+```bash
+npx skills add ./skills/clean-vtt -g
+npx skills add ./skills/convert-docx -g
+npx skills add ./skills/resumen-accionables -g
+npx skills add ./skills/sintesis -g
+npx skills add ./skills/fusion -g
+npx skills add ./skills/scope-doc -g
+npx skills add ./skills/tarjeta-us -g
+npx skills add ./skills/preparacion-us -g
+```
+
+### Convención de nomenclatura de outputs
+
+```
+YYYYMMDD.[etapa].[tipo].[Tópico].md
+```
+
+| Etapa | Tipo | Ejemplo |
+|-------|------|---------|
+| `00` | `ResumenConAccionables` | `20260318.00.ResumenConAccionables.MiTópico.md` |
+| `01` | `Sintesis` | `20260318.01.Sintesis.VisibilidadUI.md` |
+| `02` | `Fusion` | `20260318.02.Fusion.VisibilidadUI.md` |
+| `03` | `ScopeDoc` | `20260318.03.ScopeDoc.VisibilidadUI.md` |
+| `04` | `TarjetaUS` | `20260318.04.TarjetaUS.VisibilidadUI.md` |
+
+> **Nota**: Todos los outputs de los skills son Markdown (`.md`), no JSON.
