@@ -22,7 +22,7 @@ Invocar este skill cuando el usuario mencione:
 
 2. **Leer todos los archivos de insumo** con el Read tool (o listar el directorio con Glob y leer cada uno).
 
-3. **Leer el prompt de síntesis**: Leer `Prompts/Prompt-01-Sintesis.md` para obtener las instrucciones del rol Analista de Negocio.
+3. **Leer el prompt de síntesis**: Leer `./Prompt-01-Sintesis.md` para obtener las instrucciones del rol Analista de Negocio.
 
 4. **Ejecutar la síntesis**: Aplicar el prompt sobre el conjunto de insumos leídos, asumiendo el rol de Analista de Negocio. La síntesis debe:
    - Identificar requerimientos funcionales y no funcionales detectados.

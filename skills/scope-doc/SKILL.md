@@ -21,7 +21,7 @@ Invocar este skill cuando el usuario mencione:
 
 2. **Leer todos los archivos relevantes** con el Read tool (fusión, síntesis, o cualquier otro `.md`/`.txt` disponible en la ruta).
 
-3. **Leer el prompt de scope doc**: Leer `Prompts/Prompt-scope-doc.md`.
+3. **Leer el prompt de scope doc**: Leer `./Prompt-scope-doc.md`.
 
 4. **Generar el Documento de Alcance**: Aplicar el prompt sobre los insumos para producir un documento estructurado en **Markdown** que incluya:
    - Objetivo del producto/feature.

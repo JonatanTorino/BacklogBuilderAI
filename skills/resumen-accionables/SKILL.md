@@ -2,46 +2,80 @@
 
 ## Descripción
 
-Genera un resumen ejecutivo de una reunión junto con sus action items (accionables), a partir de una transcripción procesada. Combina el resumen narrativo y los puntos de acción en un único documento Markdown.
+Genera uno o más documentos desde una transcripción procesada, según lo que pida el usuario:
+
+- **Resumen de reunión**: resumen ejecutivo, narrativo, participantes, decisiones.
+- **Action items**: lista priorizada de tareas con responsables.
+- **Reunión con accionables** (por defecto): fusión de los dos anteriores en un único documento Markdown.
 
 ## Cuándo invocar
 
 Invocar este skill cuando el usuario mencione:
 - "resumir reunión"
-- "resumen con accionables"
+- "resumen ejecutivo"
+- "resumen de reunión"
 - "action items"
-- "resumen ejecutivo de reunión"
+- "accionables"
+- "resumen con accionables"
+- "reunión con accionables"
 - "generar resumen"
 
 ## Instrucciones
 
-1. **Identificar los insumos**:
-   - Solicitar al usuario la ruta del archivo de transcripción (`.txt` limpio o `.vtt`).
-   - Si el archivo es `.vtt`, aplicar primero el skill `clean-vtt` para obtener el `.txt`.
-   - Preguntar el **nombre del tópico** para el archivo de salida (ej: `ReunionKickoff`).
+### Paso 1: Identificar los insumos
 
-2. **Leer el contenido de la transcripción** con el Read tool.
+- Solicitar al usuario la ruta del archivo de transcripción (`.txt` limpio preferentemente; si es `.vtt`, sugerir invocar primero `preprocesar-fuentes`).
+- Preguntar el **nombre del tópico** para el archivo de salida (ej: `ReunionKickoff`).
 
-3. **Aplicar el Prompt de Resumen**: Leer `Prompts/Prompt-Resumen-Reunion.md` y usarlo como instrucción sobre el contenido de la transcripción para generar el resumen ejecutivo.
+### Paso 2: Detectar el tipo de output solicitado
 
-4. **Aplicar el Prompt de Action Items**: Leer `Prompts/Prompt-action-items.md` y usarlo sobre la misma transcripción para extraer los accionables.
+Analizar el pedido del usuario para determinar qué generar:
 
-5. **Fusionar en un único documento**: Combinar el resumen ejecutivo y los action items en un Markdown estructurado con secciones claras.
+- **Solo resumen**: si el usuario pide "solo resumen", "resumen de reunión", "resumen ejecutivo" sin mencionar accionables.
+  → Usar únicamente `./Prompt-Resumen-Reunion.md`
 
-6. **Guardar el output** con el Write tool usando la convención de nombres:
-   ```
-   YYYYMMDD.00.ResumenConAccionables.[Tópico].md
-   ```
-   - `YYYYMMDD`: fecha actual.
-   - `[Tópico]`: nombre en PascalCase proporcionado por el usuario.
-   - Guardar en el mismo directorio donde está la transcripción.
+- **Solo action items**: si el usuario pide "solo action items", "solo accionables", "elementos de acción".
+  → Usar únicamente `./Prompt-action-items.md`
 
-7. **Confirmar al usuario** el nombre y ubicación del archivo generado.
+- **Reunión con accionables** (caso por defecto): si el usuario pide "con accionables", "reunión completa", o no especifica.
+  → Usar ambos prompts y fusionar en un único documento.
+
+### Paso 3: Leer el contenido de la transcripción
+
+Leer el archivo de transcripción con el Read tool.
+
+### Paso 4: Generar los documentos solicitados
+
+**Para resumen**: Leer `./Prompt-Resumen-Reunion.md` y aplicarlo sobre la transcripción.
+
+**Para action items**: Leer `./Prompt-action-items.md` y aplicarlo sobre la transcripción.
+
+**Para reunión con accionables**: Aplicar ambos prompts y combinar los resultados en un único Markdown estructurado con secciones claras.
+
+### Paso 5: Guardar el output
+
+Usar el Write tool con la convención de nombres:
+
+```
+YYYYMMDD.00.[Tipo].[Tópico].md
+```
+
+- `YYYYMMDD`: fecha actual.
+- `[Tipo]`: según lo generado:
+  - `ResumenReunion` si solo resumen
+  - `ActionItems` si solo action items
+  - `ResumenConAccionables` si ambos (por defecto)
+- `[Tópico]`: nombre en PascalCase proporcionado por el usuario.
+- Guardar en el mismo directorio donde está la transcripción.
+
+### Paso 6: Confirmar al usuario
+
+Informar el nombre y ubicación del archivo generado.
 
 ## Output esperado
 
-Archivo Markdown con:
-- **Resumen ejecutivo**: síntesis de los puntos principales de la reunión.
-- **Action items**: lista de tareas con responsables y fechas si las hay.
-
-Nombre de ejemplo: `20260318.00.ResumenConAccionables.ReunionKickoff.md`
+| Tipo | Contenido | Nombre de ejemplo |
+|------|-----------|-------------------|
+| Solo resumen | Resumen ejecutivo, participantes, decisiones | `20260318.00.ResumenReunion.ReunionKickoff.md` |
+| Solo action items | Lista priorizada de tareas con responsables | `20260318.00.ActionItems.ReunionKickoff.md` |
+| Reunión con accionables | Resumen + action items fusionados | `20260318.00.ResumenConAccionables.ReunionKickoff.md` |

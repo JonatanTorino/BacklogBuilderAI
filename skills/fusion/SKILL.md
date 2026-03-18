@@ -22,7 +22,7 @@ Invocar este skill cuando el usuario mencione:
 
 2. **Leer el archivo de síntesis anotado** con el Read tool.
 
-3. **Leer el prompt de fusión**: Leer `Prompts/Prompt-02-FusionRespuestas.md`.
+3. **Leer el prompt de fusión**: Leer `./Prompt-02-FusionRespuestas.md`.
 
 4. **Ejecutar la fusión**: Aplicar el prompt sobre el documento de síntesis con anotaciones para:
    - Integrar las respuestas a los gaps en el análisis.

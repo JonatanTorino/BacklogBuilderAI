@@ -66,20 +66,18 @@ Los componentes clave del pipeline están empaquetados como **Claude Code Skills
 
 | Skill | Directorio | Descripción |
 |-------|-----------|-------------|
-| `clean-vtt` | `skills/clean-vtt/` | Limpia archivos VTT (transcripciones) |
-| `convert-docx` | `skills/convert-docx/` | Convierte `.docx` a `.txt` |
-| `resumen-accionables` | `skills/resumen-accionables/` | Genera resumen ejecutivo + action items |
+| `preprocesar-fuentes` | `skills/preprocesar-fuentes/` | Limpia `.vtt` y convierte `.docx` a `.txt` (scripts co-localizados) |
+| `resumen-accionables` | `skills/resumen-accionables/` | Genera resumen de reunión, action items, o ambos |
 | `sintesis` | `skills/sintesis/` | Sintetiza insumos y detecta gaps (Analista de Negocio) |
 | `fusion` | `skills/fusion/` | Integra respuestas humanas a los gaps |
 | `scope-doc` | `skills/scope-doc/` | Genera Documento de Alcance Funcional |
 | `tarjeta-us` | `skills/tarjeta-us/` | Genera tarjeta de User Story para Azure DevOps |
-| `preparacion-us` | `skills/preparacion-us/` | **Skill maestro**: orquesta el pipeline completo |
+| `preparacion-us` | `skills/preparacion-us/` | **Skill maestro**: orquesta el pipeline completo delegando en sub-skills |
 
 ### Instalación global
 
 ```bash
-npx skills add ./skills/clean-vtt -g
-npx skills add ./skills/convert-docx -g
+npx skills add ./skills/preprocesar-fuentes -g
 npx skills add ./skills/resumen-accionables -g
 npx skills add ./skills/sintesis -g
 npx skills add ./skills/fusion -g

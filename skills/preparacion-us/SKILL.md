@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Orquesta el pipeline completo de BacklogBuilderAI desde fuentes brutas (transcripciones `.vtt`, documentos `.docx`, textos `.txt`) hasta la User Story final lista para Azure DevOps. Coordina todos los skills individuales en secuencia, con una pausa intermedia para revisión humana de la síntesis.
+Orquesta el pipeline completo de BacklogBuilderAI desde fuentes brutas (transcripciones `.vtt`, documentos `.docx`, textos `.txt`) hasta la User Story final lista para Azure DevOps. Delega en los sub-skills individuales leyendo sus `SKILL.md` por ruta relativa, sin duplicar recursos propios.
 
 ## Cuándo invocar
 
@@ -13,6 +13,29 @@ Invocar este skill cuando el usuario mencione:
 - "preparacion-us"
 - "flujo completo"
 - "procesar todo desde las fuentes"
+
+## Prerequisito de instalación
+
+Para que este skill maestro funcione correctamente, los siguientes sub-skills deben estar instalados en el **mismo nivel de directorio** (`../`):
+
+- `preprocesar-fuentes`
+- `resumen-accionables`
+- `sintesis`
+- `fusion`
+- `scope-doc`
+- `tarjeta-us`
+
+Si se instalan globalmente, instalar todos juntos para preservar la estructura relativa:
+
+```bash
+npx skills add ./skills/preprocesar-fuentes -g
+npx skills add ./skills/resumen-accionables -g
+npx skills add ./skills/sintesis -g
+npx skills add ./skills/fusion -g
+npx skills add ./skills/scope-doc -g
+npx skills add ./skills/tarjeta-us -g
+npx skills add ./skills/preparacion-us -g
+```
 
 ## Pipeline de ejecución
 
@@ -40,43 +63,26 @@ Antes de comenzar, solicitar al usuario:
 
 ### Paso 1: Pre-procesar fuentes
 
-Listar todos los archivos en el directorio de trabajo usando Glob.
+Leer `../preprocesar-fuentes/SKILL.md` y seguir sus instrucciones para procesar los archivos `.vtt` y/o `.docx` del directorio de trabajo.
 
-**Para cada `.vtt` encontrado:**
-- Ejecutar el skill `clean-vtt`:
-  ```bash
-  python PythonScripts/clean_vtt.py "<ruta_directorio>"
-  ```
-- Los `.txt` limpios quedan en `vtt-limpios/`.
-
-**Para cada `.docx` encontrado:**
-- Ejecutar el skill `convert-docx`:
-  ```bash
-  python PythonScripts/convert_docx_to_text.py "<ruta_directorio>"
-  ```
-- Los `.txt` quedan junto a los originales.
-
-Informar al usuario: "Pre-procesamiento completado. Archivos listos: [lista de .txt generados]"
+- Si ya existen archivos `.txt` pre-procesados, este paso puede omitirse.
+- Informar al usuario: "Pre-procesamiento completado. Archivos listos: [lista de .txt generados]"
 
 ---
 
 ### Paso 2: Resumen con accionables
 
-Para cada transcripción procesada (`.txt` en `vtt-limpios/` o junto a los originales):
+Leer `../resumen-accionables/SKILL.md` y seguir sus instrucciones en modo **"reunión con accionables"** (ambos prompts, documento fusionado).
 
-1. Leer el contenido del `.txt`.
-2. Leer `Prompts/Prompt-Resumen-Reunion.md` y `Prompts/Prompt-action-items.md`.
-3. Generar resumen ejecutivo + action items.
-4. Guardar como `YYYYMMDD.00.ResumenConAccionables.[Tópico].md` en el directorio de trabajo.
+Guardar como `YYYYMMDD.00.ResumenConAccionables.[Tópico].md` en el directorio de trabajo.
 
 ---
 
 ### Paso 3: Síntesis
 
-1. Leer todos los archivos `.txt` y `.md` disponibles en el directorio de trabajo (incluyendo los resúmenes del Paso 2).
-2. Leer `Prompts/Prompt-01-Sintesis.md`.
-3. Generar la síntesis en Markdown asumiendo el rol de Analista de Negocio.
-4. Guardar como `YYYYMMDD.01.Sintesis.[Tópico].md` en el directorio de trabajo.
+Leer `../sintesis/SKILL.md` y seguir sus instrucciones con todos los `.txt` y `.md` disponibles en el directorio de trabajo (incluyendo el resumen del Paso 2).
+
+Guardar como `YYYYMMDD.01.Sintesis.[Tópico].md` en el directorio de trabajo.
 
 ---
 
@@ -99,30 +105,25 @@ Mostrar al usuario el contenido de la síntesis generada y decir:
 
 ### Paso 4: Fusión (tras confirmación)
 
-Una vez que el usuario confirme:
+Leer `../fusion/SKILL.md` y seguir sus instrucciones con el archivo de síntesis anotado por el usuario.
 
-1. Leer el archivo de síntesis con las anotaciones del usuario (`YYYYMMDD.01.Sintesis.[Tópico].md`).
-2. Leer `Prompts/Prompt-02-FusionRespuestas.md`.
-3. Integrar las respuestas a los gaps y generar el documento consolidado en Markdown.
-4. Guardar como `YYYYMMDD.02.Fusion.[Tópico].md` en el directorio de trabajo.
+Guardar como `YYYYMMDD.02.Fusion.[Tópico].md` en el directorio de trabajo.
 
 ---
 
 ### Paso 5: Scope Doc
 
-1. Leer todos los archivos `.md` en el directorio de trabajo (especialmente el de fusión).
-2. Leer `Prompts/Prompt-scope-doc.md`.
-3. Generar el Documento de Alcance Funcional en Markdown.
-4. Guardar como `YYYYMMDD.03.ScopeDoc.[Tópico].md` en el directorio de trabajo.
+Leer `../scope-doc/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo (especialmente el de fusión).
+
+Guardar como `YYYYMMDD.03.ScopeDoc.[Tópico].md` en el directorio de trabajo.
 
 ---
 
 ### Paso 6: Tarjeta de User Story
 
-1. Leer todos los archivos `.md` en el directorio de trabajo.
-2. Leer `Prompts/Prompt-Propuesta-UserStory.md`.
-3. Generar la tarjeta de User Story completa en Markdown, lista para Azure DevOps.
-4. Guardar como `YYYYMMDD.04.TarjetaUS.[Tópico].md` en el directorio de trabajo.
+Leer `../tarjeta-us/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo.
+
+Guardar como `YYYYMMDD.04.TarjetaUS.[Tópico].md` en el directorio de trabajo.
 
 ---
 
@@ -158,3 +159,4 @@ La tarjeta de User Story está lista para subir a Azure DevOps.
 - La pausa en el Paso 3 es obligatoria y no debe saltarse.
 - Si el usuario ya tiene archivos pre-procesados (`.txt`), el Paso 1 puede omitirse.
 - Si ya existe un archivo de síntesis con anotaciones, el pipeline puede iniciarse desde el Paso 4.
+- Este skill no tiene recursos propios (scripts ni prompts). Todo lo delega a los sub-skills.

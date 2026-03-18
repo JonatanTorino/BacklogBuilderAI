@@ -24,7 +24,7 @@ Invocar este skill cuando el usuario mencione:
 
 2. **Leer todos los archivos del directorio** con el Read tool (o Glob + Read para listar y leer cada `.md`/`.txt`).
 
-3. **Leer el prompt de User Story**: Leer `Prompts/Prompt-Propuesta-UserStory.md`.
+3. **Leer el prompt de User Story**: Leer `./Prompt-Propuesta-UserStory.md`.
 
 4. **Generar la tarjeta de User Story**: Aplicar el prompt sobre el conjunto de insumos para producir una tarjeta de User Story en **Markdown** con el formato estándar para Azure DevOps:
    - **Título** de la User Story.
