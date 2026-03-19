@@ -77,6 +77,12 @@ YYYYMMDD.[etapa].[tipo].[Tópico].md
 
 ---
 
+## Reglas del agente
+
+- **No ejecutar operaciones de git** (commit, push, add, rm, mv, etc.) a menos que el usuario lo solicite explícitamente.
+
+---
+
 ## Prerrequisitos de entorno
 
 - **Python 3.x** con el paquete `python-docx` instalado (`pip install python-docx`).
