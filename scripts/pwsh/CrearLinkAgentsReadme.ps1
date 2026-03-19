@@ -7,10 +7,10 @@ Set-Location $repositoryPath
 # 2. Configura Git para symlinks
 git config core.symlinks true
 
-# 3. Busca todas las carpetas que contienen GEMINI.md
-$geminiFiles = Get-ChildItem -Path $repositoryPath -Filter "GEMINI.md" -Recurse -File
+# 3. Busca todas las carpetas que contienen AGENTS.md
+$geminiFiles = Get-ChildItem -Path $repositoryPath -Filter "AGENTS.md" -Recurse -File
 
-# 4. Para cada GEMINI.md encontrado, crea un README.md symlink
+# 4. Para cada AGENTS.md encontrado, crea un README.md symlink
 foreach ($geminiFile in $geminiFiles) {
     $directoryPath = $geminiFile.DirectoryName
     $readmePath = Join-Path $directoryPath "README.md"
@@ -21,8 +21,8 @@ foreach ($geminiFile in $geminiFiles) {
     if (Test-Path $readmePath) {
         $existingReadme = Get-Item $readmePath
         
-        # Si ya es un symlink que apunta a GEMINI.md, saltarlo
-        if ($existingReadme.LinkType -eq "SymbolicLink" -and $existingReadme.Target -eq "GEMINI.md") {
+        # Si ya es un symlink que apunta a AGENTS.md, saltarlo
+        if ($existingReadme.LinkType -eq "SymbolicLink" -and $existingReadme.Target -eq "AGENTS.md") {
             Write-Host "  Symlink ya existe y es correcto" -ForegroundColor Gray
             continue
         }
@@ -34,8 +34,8 @@ foreach ($geminiFile in $geminiFiles) {
     # Crea el symlink
     try {
         Push-Location $directoryPath
-        New-Item -ItemType SymbolicLink -Path "README.md" -Target "GEMINI.md" -ErrorAction Stop
-        Write-Host "  Symlink creado: README.md -> GEMINI.md" -ForegroundColor Green
+        New-Item -ItemType SymbolicLink -Path "README.md" -Target "AGENTS.md" -ErrorAction Stop
+        Write-Host "  Symlink creado: README.md -> AGENTS.md" -ForegroundColor Green
         Pop-Location
     }
     catch {
@@ -55,4 +55,4 @@ Get-ChildItem -Path $repositoryPath -Filter "README.md" -Recurse -File |
 
 # 6. Git add
 git add .
-Write-Host "Ejecuta: git commit -m 'Add README-GEMINI symlinks' && git push" -ForegroundColor Yellow
+Write-Host "Ejecuta: git commit -m 'Add README-AGENTS symlinks' && git push" -ForegroundColor Yellow

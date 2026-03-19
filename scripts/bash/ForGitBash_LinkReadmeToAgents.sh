@@ -12,7 +12,7 @@ find . -name "README.md" -type f -exec rm -f {} \;
 
 echo "--- Creando nuevos enlaces simbólicos nativos ---"
 # El comando ahora fallará si no puede crear un link REAL
-find . -name "GEMINI.md" -execdir ln -sv GEMINI.md README.md \;
+find . -name "AGENTS.md" -execdir ln -sv AGENTS.md README.md \;
 
 echo ""
 echo "--- Registrando en Git ---"

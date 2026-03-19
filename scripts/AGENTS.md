@@ -24,7 +24,7 @@ Scripts de mantenimiento del repositorio. Requieren Git Bash con `MSYS=winsymlin
 | Script | Descripción |
 |--------|-------------|
 | `ForGitBash_SetupAgentsSkills.sh` | Crea `.agents/skills/` con 7 symlinks nativos trackeados por Git |
-| `ForGitBash_LinkReadmeToGemini.sh` | Crea symlinks `README.md → GEMINI.md` en todos los subdirectorios |
+| `ForGitBash_LinkReadmeToAgents.sh` | Crea symlinks `README.md → AGENTS.md` en todos los subdirectorios |
 
 ---
 
@@ -55,7 +55,7 @@ Scripts de automatización para crear backlogs en Azure DevOps desde JSON.
 | `config.template.json` | Plantilla de configuración (organización ADO, proyecto, PAT) |
 | `final_backlog.template.json` | Plantilla de estructura del backlog de entrada |
 | `Log/` | Historial de ejecuciones |
-| `CrearLinkGeminiReadme.ps1` | Crea symlinks `README.md → GEMINI.md` (equivalente PowerShell de `ForGitBash_LinkReadmeToGemini.sh`) |
+| `CrearLinkAgentsReadme.ps1` | Crea symlinks `README.md → AGENTS.md` (equivalente PowerShell de `ForGitBash_LinkReadmeToAgents.sh`) |
 
 ### Uso básico
 
