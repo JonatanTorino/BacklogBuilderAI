@@ -63,8 +63,7 @@ YYYYMMDD.[etapa].[tipo].[Tópico].md
 ## Estructura de contexto adicional
 
 - **`Prompts/GEMINI.md`**: Prompts del pipeline que no tienen skill equivalente.
-- **`ScriptsForADO/GEMINI.md`**: Automatización de PowerShell para Azure DevOps.
-- **`PythonScripts/GEMINI.md`**: Herramientas de pre-procesamiento de datos.
+- **`scripts/GEMINI.md`**: Scripts de utilidad organizados por tecnología (bash, python, pwsh).
 - **`Ideas/GEMINI.md`**: Banco de ideas y mejoras futuras.
 - **`KnowledgeBase/GEMINI.md`**: Archivo de backlogs y documentos de síntesis.
 
@@ -81,4 +80,4 @@ YYYYMMDD.[etapa].[tipo].[Tópico].md
 ## Prerrequisitos de entorno
 
 - **Python 3.x** con el paquete `python-docx` instalado (`pip install python-docx`).
-- Los scripts Python de `PythonScripts/` son invocados por el skill `preprocesar-fuentes`.
+- Los scripts Python de `scripts/python/` son la referencia manual; el skill `preprocesar-fuentes` tiene sus propias copias en `skills/preprocesar-fuentes/scripts/`.
