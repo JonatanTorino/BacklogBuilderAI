@@ -1,9 +1,0 @@
-description = "Analista de Negocio. Sintetiza insumos y detecta gaps. Genera un JSON con el análisis."
-prompt = """
-Recibe la ruta de insumos: {{args}}
-
-1. Lista y lee recursivamente todos los archivos de texto/documentación en la ruta proporcionada.
-2. Aplica el prompt: @Prompts/Prompt-01-Sintesis.md
-3. Genera el nombre del archivo de salida siguiendo la convención: `YYYYMMDD.TópicoPrincipal.01.Sintesis.json`.
-4. Guarda el resultado en el mismo directorio de insumos.
-"""
