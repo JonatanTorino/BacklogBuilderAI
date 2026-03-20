@@ -1,5 +1,5 @@
 ---
-name: tarjeta-us
+name: rf-tarjeta-us
 description: >
   Genera la tarjeta de User Story final en formato Markdown lista para Azure DevOps
   (ADO), siguiendo los principios INVEST y BDD. Consolida todos los insumos del

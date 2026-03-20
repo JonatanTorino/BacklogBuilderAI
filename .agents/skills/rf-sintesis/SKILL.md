@@ -1,5 +1,5 @@
 ---
-name: sintesis
+name: rf-sintesis
 description: >
   Sintetiza múltiples insumos (transcripciones, documentos, resúmenes) asumiendo el
   rol de Analista de Negocio senior: identifica requerimientos funcionales y no
