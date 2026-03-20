@@ -1,16 +1,16 @@
 ---
-name: preparacion-us
+name: rf-preparacion-us
 description: >
   Skill maestro que orquesta el pipeline completo de BacklogBuilderAI: desde fuentes
   brutas (.vtt, .docx, .txt) hasta la User Story final lista para Azure DevOps.
-  Delega en los sub-skills preprocesar-fuentes, resumen-accionables, sintesis, fusion,
-  scope-doc y tarjeta-us, con una pausa obligatoria de revisión humana entre la
+  Delega en los sub-skills rf-preprocesar-fuentes, rf-resumen-accionables, rf-sintesis, rf-fusion,
+  rf-scope-doc y rf-tarjeta-us, con una pausa obligatoria de revisión humana entre la
   síntesis y la fusión. Requiere que los demás skills estén instalados al mismo nivel.
   Usar este skill cuando el usuario mencione "pipeline completo", "preparar user story",
   "crear US desde transcripciones", "flujo completo" o "procesar todo desde las fuentes".
 ---
 
-# Skill: preparacion-us (Skill Maestro)
+# Skill: rf-preparacion-us (Skill Maestro)
 
 ## Descripción
 
@@ -22,7 +22,7 @@ Invocar este skill cuando el usuario mencione:
 - "pipeline completo"
 - "preparar user story"
 - "crear US desde transcripciones"
-- "preparacion-us"
+- "rf-preparacion-us"
 - "flujo completo"
 - "procesar todo desde las fuentes"
 
@@ -30,23 +30,23 @@ Invocar este skill cuando el usuario mencione:
 
 Para que este skill maestro funcione correctamente, los siguientes sub-skills deben estar instalados en el **mismo nivel de directorio** (`../`):
 
-- `preprocesar-fuentes`
-- `resumen-accionables`
-- `sintesis`
-- `fusion`
-- `scope-doc`
-- `tarjeta-us`
+- `rf-preprocesar-fuentes`
+- `rf-resumen-accionables`
+- `rf-sintesis`
+- `rf-fusion`
+- `rf-scope-doc`
+- `rf-tarjeta-us`
 
 Si se instalan globalmente, instalar todos juntos para preservar la estructura relativa:
 
 ```bash
-npx skills add ./skills/preprocesar-fuentes -g
-npx skills add ./skills/resumen-accionables -g
-npx skills add ./skills/sintesis -g
-npx skills add ./skills/fusion -g
-npx skills add ./skills/scope-doc -g
-npx skills add ./skills/tarjeta-us -g
-npx skills add ./skills/preparacion-us -g
+npx skills add ./skills/rf-preprocesar-fuentes -g
+npx skills add ./skills/rf-resumen-accionables -g
+npx skills add ./skills/rf-sintesis -g
+npx skills add ./skills/rf-fusion -g
+npx skills add ./skills/rf-scope-doc -g
+npx skills add ./skills/rf-tarjeta-us -g
+npx skills add ./skills/rf-preparacion-us -g
 ```
 
 ## Pipeline de ejecución
@@ -75,7 +75,7 @@ Antes de comenzar, solicitar al usuario:
 
 ### Paso 1: Pre-procesar fuentes
 
-Leer `../preprocesar-fuentes/SKILL.md` y seguir sus instrucciones para procesar los archivos `.vtt` y/o `.docx` del directorio de trabajo.
+Leer `../rf-preprocesar-fuentes/SKILL.md` y seguir sus instrucciones para procesar los archivos `.vtt` y/o `.docx` del directorio de trabajo.
 
 - Si ya existen archivos `.txt` pre-procesados, este paso puede omitirse.
 - Informar al usuario: "Pre-procesamiento completado. Archivos listos: [lista de .txt generados]"
@@ -84,7 +84,7 @@ Leer `../preprocesar-fuentes/SKILL.md` y seguir sus instrucciones para procesar 
 
 ### Paso 2: Resumen con accionables
 
-Leer `../resumen-accionables/SKILL.md` y seguir sus instrucciones en modo **"reunión con accionables"** (ambos prompts, documento fusionado).
+Leer `../rf-resumen-accionables/SKILL.md` y seguir sus instrucciones en modo **"reunión con accionables"** (ambos prompts, documento fusionado).
 
 Guardar como `YYYYMMDD.00.ResumenConAccionables.[Tópico].md` en el directorio de trabajo.
 
@@ -92,7 +92,7 @@ Guardar como `YYYYMMDD.00.ResumenConAccionables.[Tópico].md` en el directorio d
 
 ### Paso 3: Síntesis
 
-Leer `../sintesis/SKILL.md` y seguir sus instrucciones con todos los `.txt` y `.md` disponibles en el directorio de trabajo (incluyendo el resumen del Paso 2).
+Leer `../rf-sintesis/SKILL.md` y seguir sus instrucciones con todos los `.txt` y `.md` disponibles en el directorio de trabajo (incluyendo el resumen del Paso 2).
 
 Guardar como `YYYYMMDD.01.Sintesis.[Tópico].md` en el directorio de trabajo.
 
@@ -117,7 +117,7 @@ Mostrar al usuario el contenido de la síntesis generada y decir:
 
 ### Paso 4: Fusión (tras confirmación)
 
-Leer `../fusion/SKILL.md` y seguir sus instrucciones con el archivo de síntesis anotado por el usuario.
+Leer `../rf-fusion/SKILL.md` y seguir sus instrucciones con el archivo de síntesis anotado por el usuario.
 
 Guardar como `YYYYMMDD.02.Fusion.[Tópico].md` en el directorio de trabajo.
 
@@ -125,7 +125,7 @@ Guardar como `YYYYMMDD.02.Fusion.[Tópico].md` en el directorio de trabajo.
 
 ### Paso 5: Scope Doc
 
-Leer `../scope-doc/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo (especialmente el de fusión).
+Leer `../rf-scope-doc/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo (especialmente el de fusión).
 
 Guardar como `YYYYMMDD.03.ScopeDoc.[Tópico].md` en el directorio de trabajo.
 
@@ -133,7 +133,7 @@ Guardar como `YYYYMMDD.03.ScopeDoc.[Tópico].md` en el directorio de trabajo.
 
 ### Paso 6: Tarjeta de User Story
 
-Leer `../tarjeta-us/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo.
+Leer `../rf-tarjeta-us/SKILL.md` y seguir sus instrucciones con todos los `.md` disponibles en el directorio de trabajo.
 
 Guardar como `YYYYMMDD.04.TarjetaUS.[Tópico].md` en el directorio de trabajo.
 

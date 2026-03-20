@@ -1,5 +1,5 @@
 ---
-name: fusion
+name: rf-fusion
 description: >
   Integra las respuestas del usuario/stakeholders a los gaps identificados en la
   síntesis, produciendo un documento consolidado en Markdown listo para generar el

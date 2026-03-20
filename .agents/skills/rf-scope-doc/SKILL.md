@@ -1,5 +1,5 @@
 ---
-name: scope-doc
+name: rf-scope-doc
 description: >
   Genera el Documento de Alcance Funcional en Markdown a partir de los insumos
   procesados del pipeline (síntesis, fusión y otros documentos de contexto).

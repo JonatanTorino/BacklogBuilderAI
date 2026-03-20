@@ -1,5 +1,5 @@
 ---
-name: resumen-accionables
+name: rf-resumen-accionables
 description: >
   Genera documentos de resumen a partir de transcripciones de reuniones procesadas.
   Puede producir: un resumen ejecutivo de la reunión, una lista priorizada de action

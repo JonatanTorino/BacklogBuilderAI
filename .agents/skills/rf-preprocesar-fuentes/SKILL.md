@@ -1,5 +1,5 @@
 ---
-name: preprocesar-fuentes
+name: rf-preprocesar-fuentes
 description: >
   Convierte archivos de transcripción y documentos Word a texto plano (.txt) listo
   para el pipeline de BacklogBuilderAI. Detecta automáticamente el tipo de archivo
