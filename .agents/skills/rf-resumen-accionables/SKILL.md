@@ -2,11 +2,14 @@
 name: rf-resumen-accionables
 description: >
   Genera documentos de resumen a partir de transcripciones de reuniones procesadas.
-  Puede producir: un resumen ejecutivo de la reunión, una lista priorizada de action
-  items con responsables, o ambos fusionados en un único documento (modo por defecto).
-  Usar este skill cuando el usuario mencione "resumir reunión", "resumen ejecutivo",
-  "resumen de reunión", "action items", "accionables", "resumen con accionables",
-  "reunión con accionables" o "generar resumen", incluso si no especifica el formato exacto.
+  Puede producir: 
+  1) un resumen ejecutivo de la reunión
+  2) una lista priorizada de action items con responsables
+  3) o ambos fusionados en un único documento (modo por defecto).
+  Usar este skill cuando el usuario mencione "resumir reunión", "resumen de reunión", "generar resumen"; para el punto 1.
+  Usar este skill cuando el usuario mencione "action items", "lista de accionables"; para el punto 2
+  Usar este skill cuando el usuario mencione "resumen con accionables", "reunión con accionables", 
+  Si no especifica el formato exacto, preguntar que documento generar.
 ---
 
 # Skill: resumen-accionables

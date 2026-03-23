@@ -111,12 +111,10 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser(description="Limpia archivos .vtt y organiza los archivos.")
-    parser.add_argument("directory", help="Directorio objetivo que contiene los archivos .vtt")
+    parser.add_argument("path", help="Archivo .vtt o directorio que contiene archivos .vtt")
     args = parser.parse_args()
 
-    target_dir = args.directory
-    originals_dir = os.path.join(target_dir, "vtt-originales")
-    clean_dir = os.path.join(target_dir, "vtt-limpios")
+    input_path = args.path
 
     output_report = {
         "processedFiles": [],
@@ -128,16 +126,28 @@ def main():
         }
     }
 
-    if not os.path.exists(target_dir):
-        print(f"Directory not found: {target_dir}")
+    if not os.path.exists(input_path):
+        print(f"Path not found: {input_path}")
         return
+
+    if os.path.isfile(input_path):
+        if not input_path.endswith('.vtt'):
+            print(f"File is not a .vtt file: {input_path}")
+            return
+        target_dir = os.path.dirname(os.path.abspath(input_path))
+        files = [os.path.basename(input_path)]
+    else:
+        target_dir = input_path
+        # Listar archivos en el directorio raíz (ignorando los subdirectorios recién creados)
+        files = [f for f in os.listdir(target_dir) if f.endswith('.vtt') and os.path.isfile(os.path.join(target_dir, f))]
+
+    originals_dir = os.path.join(target_dir, "vtt-originales")
+    clean_dir = os.path.join(target_dir, "vtt-limpios")
 
     # Crear directorios de organización si no existen
     os.makedirs(originals_dir, exist_ok=True)
     os.makedirs(clean_dir, exist_ok=True)
 
-    # Listar archivos en el directorio raíz (ignorando los subdirectorios recién creados)
-    files = [f for f in os.listdir(target_dir) if f.endswith('.vtt') and os.path.isfile(os.path.join(target_dir, f))]
     output_report["summary"]["totalFilesProcessed"] = len(files)
 
     for filename in files:
