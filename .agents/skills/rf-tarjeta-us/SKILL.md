@@ -44,7 +44,6 @@ Invocar este skill cuando el usuario mencione:
    - **Descripción** detallada.
    - **Criterios de Aceptación** (Gherkin o lista numerada).
    - **Notas técnicas** y dependencias.
-   - **Definition of Done** si aplica.
 
 5. **Guardar el output** con el Write tool usando la convención:
    ```

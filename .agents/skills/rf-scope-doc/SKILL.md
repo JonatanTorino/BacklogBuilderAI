@@ -31,7 +31,7 @@ Invocar este skill cuando el usuario mencione:
    - Solicitar la ruta del directorio con los archivos procesados (típicamente el archivo de fusión `YYYYMMDD.02.Fusion.[Tópico].md` y otros documentos de contexto disponibles).
    - Preguntar el **nombre del tópico** si no se puede inferir del directorio.
 
-2. **Leer todos los archivos relevantes** con el Read tool (fusión, síntesis, o cualquier otro `.md`/`.txt` disponible en la ruta).
+2. **Leer todos los archivos relevantes** con el Read tool (fusión, síntesis, o cualquier otro archivo disponible en la ruta, incluyendo archivos de imágenes).
 
 3. **Leer el prompt de scope doc**: Leer `./Prompt-scope-doc.md`.
 
