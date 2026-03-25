@@ -3,8 +3,7 @@ name: rf-scope-doc
 description: >
   Genera el Documento de Alcance Funcional en Markdown a partir de los insumos
   procesados del pipeline (síntesis, fusión y otros documentos de contexto).
-  Define objetivo, alcance, usuarios y roles, restricciones, dependencias y
-  criterios de aceptación de alto nivel. Es el paso previo a la generación
+  Define objetivo, alcance, usuarios y roles, restricciones y dependencias. Es el paso previo a la generación
   de la User Story. Usar este skill cuando el usuario mencione "scope document",
   "documento de alcance", "alcance funcional", "generar scope doc" o
   "aplicar Prompt-scope-doc".
@@ -40,7 +39,6 @@ Invocar este skill cuando el usuario mencione:
    - Alcance funcional (qué está incluido y qué no).
    - Usuarios y roles involucrados.
    - Restricciones y dependencias.
-   - Criterios de aceptación de alto nivel.
 
 5. **Guardar el output** con el Write tool usando la convención:
    ```
