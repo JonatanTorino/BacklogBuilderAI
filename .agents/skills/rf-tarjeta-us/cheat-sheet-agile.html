@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cheat Sheet Agile — Caso de uso • User Story • Task</title>
+  <style>
+    :root{
+      --bg:#0b0f14;        /* fondo oscuro */
+      --panel:#111824;     /* paneles */
+      --card:#0f1520;      /* tarjetas */
+      --text:#e6eef8;      /* texto principal */
+      --muted:#a8b3c7;     /* texto secundario */
+      --accent:#6ee7ff;    /* acento frío */
+      --good:#22c55e;      /* correcto */
+      --bad:#ef4444;       /* incorrecto */
+      --border:#1f2a3a;    /* bordes */
+      --code:#0b1220;      /* fondo code */
+      --shadow: 0 10px 24px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background: radial-gradient(1200px 600px at 10% -10%, rgba(110,231,255,.06), transparent),
+                               radial-gradient(900px 500px at 90% -10%, rgba(34,197,94,.05), transparent),
+                               var(--bg);
+      color:var(--text); font: 500 16px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    }
+    .wrap{max-width:1100px; margin:40px auto; padding:0 20px}
+    header{display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:18px}
+    h1{font-size:28px; margin:0; letter-spacing:.2px}
+    .sub{color:var(--muted); font-size:14px}
+
+    .flow{display:flex; align-items:center; gap:10px; color:var(--muted); background:var(--panel); border:1px solid var(--border); padding:10px 14px; border-radius:999px; width:max-content; box-shadow:var(--shadow)}
+    .dot{width:8px; height:8px; border-radius:50%}
+    .arrow{opacity:.65}
+
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(3, 1fr); margin-top:18px}
+    @media (max-width:1000px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00) 30%), var(--card);
+          border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h2{margin:0 0 8px; font-size:20px}
+    .badge{display:inline-flex; align-items:center; gap:6px; background:var(--panel); border:1px solid var(--border); color:var(--muted); font-size:12px; padding:4px 10px; border-radius:999px}
+
+    .kw{background:rgba(110,231,255,.12); color:var(--accent); border:1px solid rgba(110,231,255,.25); padding:2px 8px; border-radius:6px; font-size:12px}
+
+    .rule{display:grid; gap:10px; margin:12px 0;}
+    .rule b{color:var(--accent)}
+
+    code, pre{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+    pre{background:var(--code); border:1px solid var(--border); border-radius:12px; padding:12px; overflow:auto}
+
+    .list{margin:8px 0 0 0; padding-left:18px}
+    .list li{margin:4px 0}
+
+    .examples{display:grid; gap:10px}
+    .ex{border:1px solid var(--border); border-radius:12px; padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 40%)}
+    .ex.good{border-color:rgba(34,197,94,.35)}
+    .ex.bad{border-color:rgba(239,68,68,.35)}
+    .ex .label{display:inline-flex; gap:8px; align-items:center; font-size:12px; color:var(--muted)}
+    .chip{padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:var(--panel); color:var(--muted); font-size:12px}
+
+    .gwt li{margin:6px 0}
+
+    details{border:1px solid var(--border); border-radius:12px; background:var(--panel); overflow:hidden}
+    summary{cursor:pointer; padding:12px 14px; font-weight:600; list-style:none}
+    summary::-webkit-details-marker{display:none}
+    .content{padding:0 14px 14px}
+
+    footer{color:var(--muted); font-size:12px; margin-top:16px}
+    .sep{height:1px; background:var(--border); margin:16px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Cheat Sheet Agile</h1>
+        <div class="sub">Caso de uso • User Story • Task — versión HTML</div>
+      </div>
+      <div class="flow" title="Relación principal">
+        <span class="dot" style="background:var(--accent)"></span>
+        Caso de uso
+        <span class="arrow">→</span>
+        <span class="dot" style="background:#c084fc"></span>
+        User Story
+        <span class="arrow">→</span>
+        <span class="dot" style="background:var(--good)"></span>
+        Tasks
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- CASO DE USO -->
+      <article class="card">
+        <h2>1) Caso de uso</h2>
+        <span class="badge">Objetivo: necesidad + valor funcional</span>
+        <div class="rule">
+          <div><b>Fórmula</b> <span class="kw">Actor</span> + <span class="kw">Objetivo</span> + <span class="kw">Valor</span> + Gatillos + Flujo + Reglas + Excepciones</div>
+          <div><b>Mini‑plantilla</b></div>
+          <pre><code>Actor:
+Objetivo:
+Valor:
+Gatillos:
+Flujo básico (pasos):
+Reglas de negocio:
+Excepciones/alternos:</code></pre>
+        </div>
+        <div class="examples">
+          <div class="ex good">
+            <div class="label"><span class="dot" style="background:var(--good)"></span>Ejemplo correcto</div>
+            <ul class="list">
+              <li>Actor: Admin de licencias</li>
+              <li>Objetivo: Habilitar/bloquear funcionalidades por entidad legal</li>
+              <li>Valor: cumplimiento y control de costos</li>
+              <li>Regla: tres niveles ON/OFF (global, producto, funcionalidad)</li>
+            </ul>
+          </div>
+          <div class="ex bad">
+            <div class="label"><span class="dot" style="background:var(--bad)"></span>Ejemplo incorrecto</div>
+            <ul class="list">
+              <li>“Hacer módulo de licencias completo con todo”</li>
+              <li>Problemas: vago, sin actor, sin valor, sin reglas</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- USER STORY -->
+      <article class="card">
+        <h2>2) User Story</h2>
+        <span class="badge">Azure DevOps: Title • Description • Acceptance Criteria</span>
+        <div class="rule">
+          <div><b>Título</b> = &lt;Verbo&gt; &lt;objeto&gt; &lt;para/por beneficio&gt;</div>
+          <div><b>Descripción</b></div>
+          <pre><code>Rol: &lt;actor&gt;
+Necesidad: &lt;acción deseada&gt;
+Valor: &lt;beneficio&gt;</code></pre>
+          <div><b>Acceptance Criteria (Given‑When‑Then)</b></div>
+          <ul class="list gwt">
+            <li><b>Given</b> estado inicial</li>
+            <li><b>When</b> acción</li>
+            <li><b>Then</b> resultado medible</li>
+          </ul>
+        </div>
+        <div class="examples">
+          <div class="ex good">
+            <div class="label"><span class="dot" style="background:var(--good)"></span>Ejemplo correcto (AxnLM)</div>
+            <p class="chip">Title: Revocar licencia para liberar cupo</p>
+            <pre><code>Rol: Administrador de licencias
+Necesidad: Revocar una licencia activa de un usuario
+Valor: Reasignar el cupo sin comprar licencias extra</code></pre>
+            <ul class="list gwt">
+              <li>Given usuario A con licencia activa, When presiono “Revocar”, Then la licencia pasa a “Disponible” y se registra auditoría.</li>
+              <li>Given uso activo, When intento revocar, Then se bloquea con motivo.</li>
+              <li>Given “Disponible”, When asigno a B, Then queda “Asignada a B” con trazabilidad.</li>
+            </ul>
+          </div>
+          <div class="ex bad">
+            <div class="label"><span class="dot" style="background:var(--bad)"></span>Ejemplo incorrecto</div>
+            <p class="chip">Title: Gestionar favoritos con filtros y botones</p>
+            <ul class="list">
+              <li>Descripción vaga. Impone solución.</li>
+              <li>AC no testables: “que funcione bien”.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK -->
+      <article class="card">
+        <h2>3) Task</h2>
+        <span class="badge">Azure DevOps: Title • Description • DoD</span>
+        <div class="rule">
+          <div><b>Principio</b>: cada task cierra ≥ 1 criterio de aceptación</div>
+          <div><b>Título</b> = &lt;Verbo imperativo&gt; &lt;objeto&gt; (AC-#)</div>
+          <div><b>Descripción</b>: Qué + Cómo mínimo + Validaciones/errores</div>
+          <div><b>DoD</b>: Tests pasan + PR revisado + Artefacto actualizado + Deploy a dev</div>
+          <div><b>Tamaño</b>: ≤ 1 día. Si no, dividir.</div>
+        </div>
+        <div class="examples">
+          <div class="ex good">
+            <div class="label"><span class="dot" style="background:var(--good)"></span>Ejemplo correcto (AxnLM)</div>
+            <p class="chip">Title: Implementar POST /licenses/{id}/revoke (AC-2)</p>
+            <p>Descripción: Endpoint REST que valida “En uso”, retorna 409 si corresponde, registra evento <code>Revoked</code> en auditoría.</p>
+            <ul class="list">
+              <li><b>DoD</b>: 3 unit tests, OpenAPI actualizado, PR aprobado, deploy a dev, changelog.</li>
+            </ul>
+          </div>
+          <div class="ex bad">
+            <div class="label"><span class="dot" style="background:var(--bad)"></span>Ejemplo incorrecto</div>
+            <p class="chip">Title: Mejorar revocar</p>
+            <ul class="list">
+              <li>Descripción ambigua. Sin vínculo a AC.</li>
+              <li>DoD inexistente. Tamaño indefinido.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- PLANTILLAS -->
+    <section class="grid">
+      <article class="card" style="grid-column: span 3;">
+        <h2>Plantillas listas para copiar</h2>
+        <details open>
+          <summary>User Story — Title, Description, Acceptance Criteria</summary>
+          <div class="content">
+<pre><code>Title: &lt;Verbo&gt; &lt;objeto&gt; &lt;para/por beneficio&gt;
+
+Description:
+Rol: &lt;actor&gt;
+Necesidad: &lt;acción deseada&gt;
+Valor: &lt;beneficio&gt;
+
+Acceptance Criteria:
+- Given &lt;estado&gt; When &lt;acción&gt; Then &lt;resultado&gt;
+- Given &lt;estado&gt; When &lt;acción&gt; Then &lt;resultado&gt;</code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>Task — Title, Description, DoD</summary>
+          <div class="content">
+<pre><code>Title: &lt;Verbo imperativo&gt; &lt;objeto&gt; (AC-#)
+
+Description:
+Qué: &lt;implementación puntual&gt;
+Cómo mínimo: &lt;endpoints/validaciones/errores&gt;
+Notas: &lt;riesgos/assumptions&gt;
+
+DoD:
+- Tests pasan (unidad/integración)
+- PR revisado
+- Artefacto actualizado (API/doc)
+- Deploy a dev OK</code></pre>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <footer>
+      Tip: si un criterio no es testeable, la historia no está lista. Si una task tarda &gt; 1 día, divídela.
+    </footer>
+  </div>
+</body>
+</html>
