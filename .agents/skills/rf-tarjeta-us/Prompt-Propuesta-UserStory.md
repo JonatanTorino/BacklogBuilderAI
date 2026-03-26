@@ -36,6 +36,13 @@ El documento resultante DEBE seguir estrictamente estas tres secciones:
 
 _Opcional_: Incluir un breve párrafo de "Descripción Funcional" si existen reglas de negocio complejas que deban detallarse.
 
+### Dependencias y riesgos
+
+Lista breve de dependencias técnicas, de negocio o de terceros y los riesgos asociados que podrían impactar la implementación de esta historia.
+
+- **Dependencias**: Sistemas, APIs, equipos o decisiones de las que depende esta historia.
+- **Riesgos**: Factores que podrían retrasar o impedir la entrega, con su nivel de impacto (alto/medio/bajo).
+
 ### Acceptance Criteria
 
 **Formato**: Lista de criterios numerados siguiendo la convención **"AC-##: [Descripción corta]"** y detallados en formato **Given-When-Then (Dado-Cuando-Entonces)**.

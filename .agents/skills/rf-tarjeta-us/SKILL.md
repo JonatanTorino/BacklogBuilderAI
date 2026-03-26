@@ -42,8 +42,8 @@ Invocar este skill cuando el usuario mencione:
    - **Título** de la User Story.
    - **Como** [rol] **quiero** [funcionalidad] **para** [beneficio].
    - **Descripción** detallada.
+   - **Dependencias y riesgos** (Notas técnicas, equipos, factores de riesgo).
    - **Criterios de Aceptación** (Gherkin o lista numerada).
-   - **Notas técnicas** y dependencias.
 
 5. **Guardar el output** con el Write tool usando la convención:
    ```
