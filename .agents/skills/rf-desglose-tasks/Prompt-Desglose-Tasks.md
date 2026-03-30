@@ -162,14 +162,49 @@ No crear Tasks para dependencias informativas o supuestos que no requieren accio
 
 **Fuente: DOD Seccion 5.**
 
-Generar exactamente **4 Tasks separadas** — una por cada entregable del DOD. No consolidar en una sola task "documentacion general": cada entregable tiene un destinatario y un proposito distinto.
+Generar exactamente **4 secciones `## Task` separadas** — una por cada entregable del DOD. Cada entregable es una Task independiente en el documento de salida, con su propio bloque `## Task N:`, `Activity`, `Original Estimate`, `Remaining` y `Description`.
 
-| Task | Referencia DOD |
-|------|---------------|
-| Actualizar documentacion tecnica minima (que hace y que objetos intervienen) | [DOD 5.1] |
-| Generar Manual de Configuracion (parametros/diccionario) | [DOD 5.2] |
-| Generar Manual de Usuario | [DOD 5.3] |
-| Actualizar archivo de alcance con estado correcto | [DOD 5.4] |
+**ANTI-PATRON — NO hacer esto (4 items dentro de 1 sola Task):**
+
+```
+## Task 21: Actualizar documentacion tecnica, manual y archivo de alcance
+- Activity: Documentation
+...
+Description:
+1. Documentacion tecnica [DOD 5.1]
+2. Manual de Configuracion [DOD 5.2]
+3. Manual de Usuario [DOD 5.3]
+4. Actualizar archivo de alcance [DOD 5.4]
+```
+
+**PATRON CORRECTO — 4 secciones ## Task independientes:**
+
+```
+## Task 21: Documentacion tecnica — descripcion de la US y objetos involucrados
+- Activity: Documentation
+- Original Estimate: 2h
+- Remaining: 2h
+...
+
+## Task 22: Manual de Configuracion — parametros y diccionario de objetos
+- Activity: Documentation
+...
+
+## Task 23: Manual de Usuario — guia operativa del flujo completo
+- Activity: Documentation
+...
+
+## Task 24: Actualizacion del archivo de alcance al estado final
+- Activity: Documentation
+...
+```
+
+| Task independiente | Referencia DOD |
+|--------------------|---------------|
+| Documentacion tecnica minima (que hace y que objetos intervienen) | [DOD 5.1] |
+| Manual de Configuracion (parametros/diccionario) | [DOD 5.2] |
+| Manual de Usuario | [DOD 5.3] |
+| Actualizacion del archivo de alcance con estado correcto | [DOD 5.4] |
 
 ### Deployment
 
@@ -194,6 +229,12 @@ Estos items del DOD son estandares de trabajo o pasos de proceso, no Tasks indep
 
 ## Formato de cada Task
 
+La seccion Description de cada Task es **obligatoria** y debe contener exactamente **tres bloques estructurados**:
+
+1. **Contexto (Situacion):** Antecedentes de negocio, origen de la necesidad y dependencias tecnicas relevantes. Responde "¿por qué existe esta tarea?".
+2. **Objetivo (Proposito):** Descripcion concreta del cambio o accion a realizar. Responde "¿qué hay que hacer?".
+3. **Criterios de Aceptacion / DoD:** Lista tecnica de resultados verificables que definen el cierre del item. Incluir aqui las referencias de trazabilidad ([AC-##], [DOD X.X]).
+
 ```markdown
 ## Task N: [Titulo descriptivo y accionable]
 
@@ -203,11 +244,13 @@ Estos items del DOD son estandares de trabajo o pasos de proceso, no Tasks indep
 
 ### Description
 
-[Descripcion clara del trabajo a realizar. Incluir contexto funcional suficiente
-para que el responsable entienda el alcance sin releer todo el Scope Doc.]
+**Contexto:** [Antecedentes, origen de la necesidad y dependencias tecnicas. Por que existe esta tarea.]
 
-[Referencias de trazabilidad integradas naturalmente en el texto, por ejemplo:
-"Cubre el escenario definido en [AC-03]. Contribuye al cumplimiento de [DOD 3.1]."]
+**Objetivo:** [Descripcion del cambio o accion concreta a realizar.]
+
+**Criterios de Aceptacion / DoD:**
+- [ ] [Resultado verificable 1]
+- [ ] [Resultado verificable 2 — con referencia si aplica, ej: cubre [AC-03] o cumple [DOD 5.1]]
 ```
 
 ## Guia de Estimacion
@@ -233,8 +276,12 @@ Si una Task de Development supera las 16h, es senal de que debe descomponerse en
 # Desglose de Tasks — [Titulo de la US]
 
 > **User Story:** [Titulo completo]
+> **Azure DevOps WI ID:** [WI_ID_AQUÍ]
 > **Fecha:** YYYY-MM-DD
 > **Total Tasks:** N | **Estimacion total:** Xh
+
+> [!IMPORTANT]
+> **Instrucción al Usuario:** Antes de proceder con la carga en Azure DevOps, debe reemplazar el placeholder `[WI_ID_AQUÍ]` con el ID numérico correspondiente de la User Story. El procesamiento fallará si el ID no es detectado.
 
 ## Resumen
 
@@ -244,7 +291,9 @@ Si una Task de Development supera las 16h, es senal de que debe descomponerse en
 | [ ] | 2 | ... | Testing | 4 |
 | [ ] | ... | ... | ... | ... |
 
-> **Nota para el procesamiento MCP:** Excluir obligatoriamente toda fila con `[x]` en la primera columna al crear las Tasks en Azure DevOps. Ante la instruccion "Limpiar archivo", remover fisicamente todas las filas marcadas con `[x]` y sus secciones de detalle asociadas. Si no se solicita limpieza, mantener las filas marcadas como registro historico de tasks descartadas.
+> **Nota para el procesamiento MCP:** 
+> 1. **Validación de WI ID (Guard Rail):** El MCP debe validar la existencia de un ID numérico válido en el campo `Azure DevOps WI ID`. Si el placeholder `[WI_ID_AQUÍ]` persiste o el campo está vacío, el MCP **debe detener la creación de Tasks** y emitir el mensaje: *"Error: WI ID no detectado. Inserte el ID en el archivo para continuar."*
+> 2. **Filtrado:** Excluir obligatoriamente toda fila con `[x]` en la primera columna al crear las Tasks en Azure DevOps. Ante la instruccion "Limpiar archivo", remover fisicamente todas las filas marcadas con `[x]` y sus secciones de detalle asociadas. Si no se solicita limpieza, mantener las filas marcadas como registro historico de tasks descartadas.
 
 ---
 
@@ -256,7 +305,13 @@ Si una Task de Development supera las 16h, es senal de que debe descomponerse en
 
 ### Description
 
-...
+**Contexto:** [Por que existe esta tarea — antecedente funcional y dependencias.]
+
+**Objetivo:** [Que hay que implementar o cambiar.]
+
+**Criterios de Aceptacion / DoD:**
+- [ ] [Resultado verificable 1]
+- [ ] [Resultado verificable 2 — referencia a [AC-##] o [DOD X.X] si aplica]
 
 ---
 
