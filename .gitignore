@@ -2,3 +2,5 @@
 .TmpFiles/
 .kilocode/mcp.json
 .vscode/mcp.json
+.claude/settings.local.json
+.agents/skills/*-workspace/
